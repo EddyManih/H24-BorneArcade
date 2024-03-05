@@ -1,25 +1,39 @@
 using UnityEngine;
 
-public class StayWithinCameraBounds : MonoBehaviour {
-  private Camera mainCamera;
+public class CameraBounds : MonoBehaviour {
+  public Camera mainCamera;
   private Vector2 screenBounds;
-  private float objectWidth;
-  private float objectHeight;
+  public float colliderDepth = 10f;
+  private float colliderThickness = 0.1f;
 
-  void Start() {
-    mainCamera = Camera.main;
+  void Awake() {
+    if (mainCamera == null)
+      mainCamera = Camera.main;
+
     screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(
         Screen.width, Screen.height, mainCamera.transform.position.z));
-    objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
-    objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
+    AddBoundaryCollider("Top", new Vector2(0, screenBounds.y),
+                        new Vector2(screenBounds.x * 2, colliderThickness));
+    AddBoundaryCollider("Bottom", new Vector2(0, -screenBounds.y),
+                        new Vector2(screenBounds.x * 2, colliderThickness));
+    AddBoundaryCollider("Left", new Vector2(-screenBounds.x, 0),
+                        new Vector2(colliderThickness, screenBounds.y * 2));
+    AddBoundaryCollider("Right", new Vector2(screenBounds.x, 0),
+                        new Vector2(colliderThickness, screenBounds.y * 2));
   }
 
-  void LateUpdate() {
-    Vector3 viewPos = transform.position;
-    viewPos.x = Mathf.Clamp(viewPos.x, screenBounds.x * -1 + objectWidth,
-                            screenBounds.x - objectWidth);
-    viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y * -1 + objectHeight,
-                            screenBounds.y - objectHeight);
-    transform.position = viewPos;
+  private void AddBoundaryCollider(string name, Vector2 position,
+                                   Vector2 size) {
+    GameObject boundary = new GameObject(name + " Boundary");
+    boundary.transform.position = position;
+    boundary.transform.parent = transform;
+
+    BoxCollider2D collider = boundary.AddComponent<BoxCollider2D>();
+    collider.size = size;
+    collider.isTrigger = false;
+
+    Rigidbody2D rb = boundary.AddComponent<Rigidbody2D>();
+    rb.isKinematic = true;
+    rb.useFullKinematicContacts = true;
   }
 }
