@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectsController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class EffectsController : MonoBehaviour {
+  public ParticleSystem[] particleSystems;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+  public void PlayEffects() {
+    foreach (ParticleSystem particleSystem in particleSystems) {
+      particleSystem.Play();
     }
+  }
 }
