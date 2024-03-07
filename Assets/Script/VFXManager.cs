@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VFXManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public VFXChannelSO vfxChannel;
+
+    private void Awake()
     {
-        
+        vfxChannel.OnCollisionVFXRequested += PlayCollisionVFX;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void PlayCollisionVFX(Vector3 position)
     {
-        
+        Debug.Log("Playing collision VFX at " + position);
     }
 }
