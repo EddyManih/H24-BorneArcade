@@ -6,12 +6,18 @@ public class VFXManager : MonoBehaviour
 
     private void Awake()
     {
-        vfxChannel.OnCollisionVFXRequested += PlayCollisionVFX;
+        if (vfxChannel != null)
+        {
+            vfxChannel.OnCollisionVFXRequested += PlayCollisionVFX;
+        }
     }
 
     private void OnDestroy()
     {
-        vfxChannel.OnCollisionVFXRequested -= PlayCollisionVFX;
+        if (vfxChannel != null)
+        {
+            vfxChannel.OnCollisionVFXRequested -= PlayCollisionVFX;
+        }
     }
 
     private void PlayCollisionVFX(Vector3 position)
