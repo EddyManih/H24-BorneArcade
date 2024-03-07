@@ -1,17 +1,11 @@
 using UnityEngine;
 
-public class EffectsController : MonoBehaviour {
-  public ParticleSystem[] particleSystems;
+public class EffectsController : MonoBehaviour
+{
+    public VFXChannelSO vfxChannel;
 
-  void OnCollisionEnter2D(Collision2D other) { PlayEffects(); }
-
-  private void PlayEffects() {
-    Vector3 position = transform.position;
-    foreach (ParticleSystem particleSystem in particleSystems) {
-      ParticleSystem newParticleSystem =
-          Instantiate(particleSystem, position, Quaternion.identity);
-      newParticleSystem.Play();
-      Destroy(newParticleSystem.gameObject, newParticleSystem.main.duration);
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        vfxChannel.RaiseCollisionEvent(collision.contacts[0].point);
     }
-  }
 }
