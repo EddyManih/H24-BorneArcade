@@ -9,6 +9,11 @@ public class VFXManager : MonoBehaviour
         vfxChannel.OnCollisionVFXRequested += PlayCollisionVFX;
     }
 
+    private void OnDestroy()
+    {
+        vfxChannel.OnCollisionVFXRequested -= PlayCollisionVFX;
+    }
+
     private void PlayCollisionVFX(Vector3 position)
     {
         Debug.Log("Playing collision VFX at " + position);
