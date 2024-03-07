@@ -11,7 +11,7 @@ public class VFXChannelSO : ScriptableObject
     {
         if (OnCollisionVFXRequested != null)
         {
-            OnCollisionVFXRequested(particleSystems, position);
+            OnCollisionVFXRequested.Invoke(particleSystems, position);
         }
     }
 }
