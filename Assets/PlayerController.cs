@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     void Awake() {
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody2D>();
+        mouvementEnabled = true;
     }
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,8 @@ public class PlayerController : MonoBehaviour
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
-        _Rb.velocity = new Vector3(_Rb.velocity.x, _Rb.velocity.y, horizontal);
+        Debug.Log(horizontal);
+        _Rb.velocity = new Vector2(horizontal, _Rb.velocity.y);
         //_Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
     }
 }
