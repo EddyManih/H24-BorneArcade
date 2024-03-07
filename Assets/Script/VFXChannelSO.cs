@@ -4,14 +4,13 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Events/VFX Channel")]
 public class VFXChannelSO : ScriptableObject
 {
-    public UnityAction<ParticleSystem[], Vector3> OnCollisionVFXRequested;
+    public UnityAction<Vector3> OnCollisionVFXRequested;
 
-    public void RaiseCollisionEvent(ParticleSystem[] particleSystems,
-                                    Vector3 position)
+    public void RaiseCollisionEvent(Vector3 position)
     {
         if (OnCollisionVFXRequested != null)
         {
-            OnCollisionVFXRequested.Invoke(particleSystems, position);
+            OnCollisionVFXRequested.Invoke(position);
         }
     }
 }
