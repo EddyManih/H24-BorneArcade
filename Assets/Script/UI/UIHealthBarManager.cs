@@ -25,6 +25,7 @@ public class UIHealthBarManager : MonoBehaviour
         healthManagerSO.healthChangeEvent.RemoveListener(ChangeSliderValue);
     }
 
+    // TO BE REMOVED
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -32,6 +33,7 @@ public class UIHealthBarManager : MonoBehaviour
             healthManagerSO.DecreaseHealth(10);
         }
     }
+    //
 
     private float ConvertIntToFloatDecimal(int amount)
     {
