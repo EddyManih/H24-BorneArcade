@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    [SerializeField] private InputAction left 
     // Start is called before the first frame update
     void Start()
     {
