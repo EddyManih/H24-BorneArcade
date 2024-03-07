@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     Animator _Anim { get; set; }
     bool mouvementEnabled {get; set; }
     Rigidbody2D _Rb { get; set; }
+    bool _Grounded { get; set; }
     bool _Flipped { get; set; }
 
     void Awake() {
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _Grounded = false;
         _Flipped = false;
     }
 
@@ -43,9 +45,8 @@ public class PlayerController : MonoBehaviour
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
-        Debug.Log(horizontal);
         _Rb.velocity = new Vector2(horizontal, _Rb.velocity.y);
-        //_Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
+        _Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
     }
 
     void FlipCharacter(float horizontal)
@@ -59,6 +60,21 @@ public class PlayerController : MonoBehaviour
         {
             _Flipped = false;
             transform.Rotate(-FlipRotation);
+        }
+    }
+
+    // Collision avec le sol
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        // On s'assure de bien être en contact avec le sol
+        if ((WhatIsGround & (1 << coll.gameObject.layer)) == 0)
+            return;
+
+        // Évite une collision avec le plafond
+        if (coll.relativeVelocity.y > 0)
+        {
+            _Grounded = true;
+            _Anim.SetBool("Grounded", _Grounded);
         }
     }
 }

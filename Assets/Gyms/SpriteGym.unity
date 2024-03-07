@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 588799443}
   - component: {fileID: 588799445}
   m_Layer: 0
-  m_Name: Player Idle 48x48_0 (2)
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   JumpForce: 9
   WhatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!61 &588799445
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 1740846519}
   - component: {fileID: 1740846518}
   - component: {fileID: 1740846520}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
