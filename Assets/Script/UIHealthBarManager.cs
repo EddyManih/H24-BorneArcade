@@ -5,6 +5,9 @@ using System.Collections;
 public class UIHealthBarManager : MonoBehaviour
 {
     [SerializeField] private Slider slider;
+    [SerializeField] private Gradient gradient;
+    [SerializeField] private Image fill;
+
     [SerializeField] HealthManagerSO healthManagerSO;
 
     private void Start()
@@ -37,6 +40,8 @@ public class UIHealthBarManager : MonoBehaviour
 
     public void ChangeSliderValue(int amount)
     {
-        slider.value = ConvertIntToFloatDecimal(amount);
+        float convertedAmount  = ConvertIntToFloatDecimal(amount);
+        fill.color = gradient.Evaluate(convertedAmount);
+        slider.value = convertedAmount;
     }
 }
