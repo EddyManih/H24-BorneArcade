@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VFXController : MonoBehaviour
+public class EffectsController : MonoBehaviour
 {
     public VFXChannelSO vfxChannel;
 
