@@ -3,6 +3,7 @@ using UnityEngine;
 public class VFXManager : MonoBehaviour
 {
     public VFXChannelSO vfxChannel;
+    public ParticleSystem[] collisionVFX;
 
     private void Awake()
     {
@@ -22,6 +23,11 @@ public class VFXManager : MonoBehaviour
 
     private void PlayCollisionVFX(Vector3 position)
     {
-        Debug.Log("Playing collision VFX at " + position);
+        foreach (ParticleSystem vfx in collisionVFX)
+        {
+            ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
+            newVfx.Play();
+            Destroy(newVfx.gameObject, newVfx.main.duration);
+        }
     }
 }
