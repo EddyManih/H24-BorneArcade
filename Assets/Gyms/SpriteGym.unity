@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 588799442}
   - component: {fileID: 588799441}
   - component: {fileID: 588799440}
+  - component: {fileID: 588799446}
   - component: {fileID: 588799444}
   - component: {fileID: 588799443}
   - component: {fileID: 588799445}
@@ -321,6 +322,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.24412757, y: 0.3094985}
   m_EdgeRadius: 0
+--- !u!114 &588799446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588799439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9774d7f0c6416e4e8a36d0d743db79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HorizontalMovement:
+    m_Name: Horizontal Movement
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4abb320a-9407-41f9-b486-dd7ab8d37b98
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: 5f1fa759-ac95-410a-ade9-ba069a59b035
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: b080b536-c19f-4d08-8d1f-1135cb859f8a
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 37f2b862-c503-465f-b0a4-a6b10a2089f5
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Movement
+      m_Flags: 8
+    m_Flags: 0
+  playerController: {fileID: 588799444}
 --- !u!1 &596067372
 GameObject:
   m_ObjectHideFlags: 0

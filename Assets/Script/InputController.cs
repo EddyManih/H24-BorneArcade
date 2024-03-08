@@ -5,19 +5,15 @@ using UnityEngine.InputSystem;
 
 public class InputController : MonoBehaviour
 {
-    [SerializeField] private InputAction left;
-    [SerializeField] private InputAction right;
+    [SerializeField] private InputAction HorizontalMovement;
+    [SerializeField] private PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
-        // Logic when left movement key is pressed
-        left.performed += context => Debug.Log("Left Key Pressed");
-        // Logic when left movement key is released
-        left.canceled += context => Debug.Log("Left Key Released");
-        // Logic when right movement key is pressed
-        right.performed += context => Debug.Log("Right Key Pressed");
-        // Logic when right movement key is pressed
-        right.canceled += context => Debug.Log("Right Key Released");
+        // Logic when movement key is pressed
+        HorizontalMovement.performed += OnMovementPerformed;
+        // Logic when movement key is released
+        HorizontalMovement.canceled  += OnMovementPerformed;
 
     }
 
@@ -25,5 +21,21 @@ public class InputController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnMovementPerformed(InputAction.CallbackContext context)
+    {
+        float movement = context.ReadValue<float>();
+        playerController.OnMovementInput(movement);
+    }
+
+    private void OnEnable()
+    {
+        HorizontalMovement.Enable();
+    }
+
+    private void OnDisable()
+    {
+        HorizontalMovement.Disable();
     }
 }

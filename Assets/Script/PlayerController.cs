@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     LayerMask WhatIsGround;
     Animator _Anim { get; set; }
-    bool mouvementEnabled {get; set; }
+    float _movementInput;
+    bool movementEnabled {get; set; }
     Rigidbody2D _Rb { get; set; }
     bool _Grounded { get; set; }
     bool _Flipped { get; set; }
@@ -25,11 +26,12 @@ public class PlayerController : MonoBehaviour
     void Awake() {
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody2D>();
-        mouvementEnabled = true;
+        movementEnabled = true;
     }
     // Start is called before the first frame update
     void Start()
     {
+        _movementInput = 0.0f;
         _Grounded = false;
         _Flipped = false;
     }
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var horizontal = mouvementEnabled ? Input.GetAxis("Horizontal") * MoveSpeed : 0;
+        var horizontal = movementEnabled ? _movementInput * MoveSpeed : 0;
         HorizontalMove(horizontal);
         FlipCharacter(horizontal);
     }
@@ -76,5 +78,10 @@ public class PlayerController : MonoBehaviour
             _Grounded = true;
             _Anim.SetBool("Grounded", _Grounded);
         }
+    }
+
+    public void OnMovementInput(float movementInput)
+    {
+        _movementInput = movementInput;
     }
 }
