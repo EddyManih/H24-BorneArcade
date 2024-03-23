@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     LayerMask WhatIsGround;
     Animator _Anim { get; set; }
     float _movementInput;
+    bool _Sliding;
     bool movementEnabled {get; set; }
     Rigidbody2D _Rb { get; set; }
     bool _Grounded { get; set; }
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody2D>();
         movementEnabled = true;
+        _Sliding = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -47,8 +49,18 @@ public class PlayerController : MonoBehaviour
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
-        _Rb.velocity = new Vector2(horizontal, _Rb.velocity.y);
-        _Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
+        if (!_Sliding)
+        { 
+            _Rb.velocity = new Vector2(horizontal, _Rb.velocity.y);
+            _Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
+        }
+        
+        if (_Sliding && (_Rb.velocity.x < 2))
+        {
+            movementEnabled = true;
+            _Sliding = false;
+            _Anim.SetBool("Sliding", _Sliding);
+        }
     }
 
     void FlipCharacter(float horizontal)
@@ -83,5 +95,16 @@ public class PlayerController : MonoBehaviour
     public void OnMovementInput(float movementInput)
     {
         _movementInput = movementInput;
+    }
+
+    public void OnSlide()
+    {
+        Debug.Log(_movementInput);
+        if (_movementInput != 0)
+        {
+            _Sliding = true;
+            movementEnabled = false;
+            _Anim.SetBool("Sliding", _Sliding);
+        }
     }
 }
