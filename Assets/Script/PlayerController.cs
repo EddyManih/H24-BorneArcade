@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     // Déclaration des constantes
     private static readonly Vector2 FlipRotation = new Vector3(0, 180);
 
+    private float _Timer;
+    private float _LastHorizontal;
+
     // Valeurs exposées
     [SerializeField]
     float MoveSpeed = 5.0f;
@@ -29,6 +32,8 @@ public class PlayerController : MonoBehaviour
         _Rb = GetComponent<Rigidbody2D>();
         movementEnabled = true;
         _Sliding = false;
+        _Timer = 0.0f;
+        _LastHorizontal = 0.0f;
     }
     // Start is called before the first frame update
     void Start()
@@ -44,22 +49,28 @@ public class PlayerController : MonoBehaviour
         var horizontal = movementEnabled ? _movementInput * MoveSpeed : 0;
         HorizontalMove(horizontal);
         FlipCharacter(horizontal);
+        _Timer += Time.deltaTime;
     }
 
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
         if (!_Sliding)
-        { 
+        {
             _Rb.velocity = new Vector2(horizontal, _Rb.velocity.y);
             _Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
         }
         
-        if (_Sliding && (_Rb.velocity.x < 2))
+        if (_Sliding)
         {
-            movementEnabled = true;
-            _Sliding = false;
-            _Anim.SetBool("Sliding", _Sliding);
+            _Rb.velocity = new Vector2(_LastHorizontal, _Rb.velocity.y);
+
+            if (_Timer > 0.5f)
+            {
+                movementEnabled = true;
+                _Sliding = false;
+                _Anim.SetBool("Sliding", _Sliding);
+            }
         }
     }
 
@@ -99,11 +110,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnSlide()
     {
-        Debug.Log(_movementInput);
-        if (_movementInput != 0)
+        if (Mathf.Abs(_movementInput) == 1)
         {
-            _Sliding = true;
+            _LastHorizontal = _movementInput * MoveSpeed;
             movementEnabled = false;
+            _Sliding = true;
+            _Timer = 0.0f;
             _Anim.SetBool("Sliding", _Sliding);
         }
     }
