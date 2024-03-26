@@ -367,6 +367,47 @@ MonoBehaviour:
       m_Action: Horizontal Movement
       m_Flags: 8
     m_Flags: 0
+  SlideToggle:
+    m_Name: Slide Toggle
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: ec2cc60c-a023-4df5-9308-6449634b0523
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: Slide
+      m_Id: 094fa924-9272-46f6-b166-ccc6ee2934ef
+      m_Path: ButtonWithOneModifier
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Slide Toggle
+      m_Flags: 4
+    - m_Name: Modifier
+      m_Id: dbe017bf-53b7-4170-b59d-908a51cd945d
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Slide Toggle
+      m_Flags: 8
+    - m_Name: Modifier
+      m_Id: 81c451fb-c9c5-4714-be11-cc6e59e06cf4
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Slide Toggle
+      m_Flags: 8
+    - m_Name: Button
+      m_Id: c6fda499-cf2d-4191-acb3-7496bb0becc3
+      m_Path: <Keyboard>/leftCtrl
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Slide Toggle
+      m_Flags: 8
+    m_Flags: 0
   playerController: {fileID: 588799444}
 --- !u!1 &596067372
 GameObject:

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InputController : MonoBehaviour
 {
     [SerializeField] private InputAction HorizontalMovement;
+    [SerializeField] private InputAction SlideToggle;
     [SerializeField] private PlayerController playerController;
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,9 @@ public class InputController : MonoBehaviour
         HorizontalMovement.performed += OnMovementPerformed;
         // Logic when movement key is released
         HorizontalMovement.canceled  += OnMovementPerformed;
+
+        //Logic when slide toggle is performed
+        SlideToggle.performed += OnSlideTogglePerformed;
 
     }
 
@@ -29,13 +33,20 @@ public class InputController : MonoBehaviour
         playerController.OnMovementInput(movement);
     }
 
+    private void OnSlideTogglePerformed(InputAction.CallbackContext context)
+    {
+        playerController.OnSlide();
+    }
+
     private void OnEnable()
     {
         HorizontalMovement.Enable();
+        SlideToggle.Enable();
     }
 
     private void OnDisable()
     {
         HorizontalMovement.Disable();
+        SlideToggle.Disable();
     }
 }
