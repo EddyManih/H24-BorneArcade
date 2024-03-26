@@ -131,13 +131,73 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 434286439225731815, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: JumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: FallInput.m_Name
+      value: Fall Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: FallInput.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: JumpInput.m_Name
+      value: Jump Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: JumpInput.m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: SlideToggle.m_Name
       value: Slide Toggle
       objectReference: {fileID: 0}
     - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: FallInput.m_Interactions
+      value: Press
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: JumpInput.m_Interactions
+      value: Press
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: FallInput.m_ExpectedControlType
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: JumpInput.m_ExpectedControlType
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: FallInput.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: JumpInput.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: SlideToggle.m_SingletonActionBindings.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: FallInput.m_SingletonActionBindings.Array.data[0].m_Id
+      value: c2749906-2b3e-4139-803f-5b3d7c6fd6d1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: JumpInput.m_SingletonActionBindings.Array.data[0].m_Id
+      value: a41420d5-bde1-4d36-989a-3c90e132c102
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: FallInput.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/s
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: JumpInput.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/w
       objectReference: {fileID: 0}
     - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: SlideToggle.m_SingletonActionBindings.Array.data[0].m_Id
@@ -154,6 +214,14 @@ PrefabInstance:
     - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: SlideToggle.m_SingletonActionBindings.Array.data[3].m_Id
       value: d3e03931-c8c8-4b64-8341-c12330fb4452
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: FallInput.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Fall Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: JumpInput.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Jump Input
       objectReference: {fileID: 0}
     - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: SlideToggle.m_SingletonActionBindings.Array.data[0].m_Name

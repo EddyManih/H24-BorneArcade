@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _Rb { get; set; }
     bool _Grounded { get; set; }
     bool _Flipped { get; set; }
+    bool _IsDoubleJump {get; set;}
+    bool _IsJump {get; set;}
+     bool _jumpInput;
+     bool _fallInput;
 
     void Awake() {
         _Anim = GetComponent<Animator>();
@@ -49,17 +53,51 @@ public class PlayerController : MonoBehaviour
         _movementInput = 0.0f;
         _Grounded = false;
         _Flipped = false;
+        _IsDoubleJump = false;
+        _IsJump = false; 
     }
 
     // Update is called once per frame
     void Update()
     {
         var horizontal = movementEnabled ? _movementInput * MoveSpeed : 0;
+         if( _jumpInput){
+            _jumpInput = false;
+            Jump();
+        }
+        if(_fallInput){
+            Fall();
+        }
         HorizontalMove(horizontal);
         FlipCharacter(horizontal);
         _Timer += Time.deltaTime;
     }
-
+    void Jump()
+{
+    if (_Grounded && !_IsJump)
+    {
+        // _Anim.SetBool("Jump", !_IsJump);
+        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+        _Grounded = false;
+        _IsJump = true;
+        _Anim.SetBool("Grounded", _Grounded);
+        _jumpInput = false; // Reset jump input
+        Debug.Log("is jumping: " + _jumpInput);
+        Debug.Log("is grounded: " + _Grounded);
+    }
+    else if (!_Grounded && !_IsDoubleJump && _IsJump)
+    {
+        // _Anim.SetBool("DoubleJump", !_IsDoubleJump);
+        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+        _IsDoubleJump = true;
+        _jumpInput = false; // Reset jump input
+    }
+}
+void Fall(){
+    if(!_Grounded){
+        _Rb.velocity = new Vector2(_Rb.velocity.x, -JumpForce);
+    }
+}
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
@@ -108,6 +146,8 @@ public class PlayerController : MonoBehaviour
         // Évite une collision avec le plafond
         if (coll.relativeVelocity.y > 0)
         {
+             _IsDoubleJump = false;
+            _IsJump = false;
             _Grounded = true;
             _Anim.SetBool("Grounded", _Grounded);
         }
@@ -116,6 +156,14 @@ public class PlayerController : MonoBehaviour
     public void OnMovementInput(float movementInput)
     {
         _movementInput = movementInput;
+    }
+     public void OnJumpInput(bool jumpInput)
+    {
+        _jumpInput = jumpInput;
+    }
+     public void OnFallInput(bool fallInput)
+    {
+        _fallInput = fallInput;
     }
 
     public void OnSlide()
