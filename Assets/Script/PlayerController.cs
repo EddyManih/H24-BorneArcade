@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,6 +19,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     LayerMask WhatIsGround;
+
+    // Call the healthManagerSO when the player loses health
+    [SerializeField]
+    HealthManagerSO healthManagerSO;
     Animator _Anim { get; set; }
     float _movementInput;
     bool movementEnabled {get; set; }
