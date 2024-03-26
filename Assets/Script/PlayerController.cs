@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
     // Déclaration des constantes
     private static readonly Vector2 FlipRotation = new Vector3(0, 180);
 
+    // Valeurs privées
+    private UnityEvent flipEvent;
+
     // Valeurs exposées
+    [SerializeField] PlayerIndicator playerIndicator;
     [SerializeField]
     float MoveSpeed = 5.0f;
 
@@ -27,6 +32,8 @@ public class PlayerController : MonoBehaviour
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody2D>();
         movementEnabled = true;
+        flipEvent = new UnityEvent();
+        flipEvent.AddListener(playerIndicator.FlipIndicator);
     }
     // Start is called before the first frame update
     void Start()
@@ -57,11 +64,13 @@ public class PlayerController : MonoBehaviour
         {
             _Flipped = true;
             transform.Rotate(FlipRotation);
+            flipEvent.Invoke();
         }
         else if (horizontal > 0 && _Flipped)
         {
             _Flipped = false;
             transform.Rotate(-FlipRotation);
+            flipEvent.Invoke();
         }
     }
 
