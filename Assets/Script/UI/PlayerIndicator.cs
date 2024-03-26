@@ -20,13 +20,7 @@ public class PlayerIndicator : MonoBehaviour
 
     public void FlipIndicator()
     {
-        if (isFlipped)
-        {
-            transform.Rotate(FlipRotation);
-        }
-        else
-        {
-            transform.Rotate(-FlipRotation);
-        }
+        transform.Rotate(FlipRotation);
+        isFlipped = !isFlipped;
     }
 }
