@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SFXManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class SFXManager : MonoBehaviour {
+  public SFXChannelSO sfxChannel;
+  public AudioClip[] sfx;
+  public AudioSource sfxSource;
+  public float volumeScale = 1f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+  private void Awake() {
+    if (sfxChannel != null) {
+      sfxChannel.OnPlaySFXRequested += PlaySFX;
     }
+  }
+
+  private void PlaySFX() {
+    foreach (AudioClip clip in sfx) {
+      sfxSource.PlayOneShot(clip, volumeScale);
+    }
+  }
 }

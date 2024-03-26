@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SFXController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class SFXController : MonoBehaviour {
+  public SFXChannelSO sfxChannel;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  public void OnCollisionEnter2D(Collision2D collision) {
+    sfxChannel.RaisePlaySFXEvent();
+  }
 }
