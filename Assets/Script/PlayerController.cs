@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,8 +8,11 @@ public class PlayerController : MonoBehaviour
 
     private float _Timer;
     private float _LastHorizontal;
+    // Valeurs privées
+    private UnityEvent flipEvent;
 
     // Valeurs exposées
+    [SerializeField] PlayerIndicator playerIndicator;
     [SerializeField]
     float MoveSpeed = 5.0f;
 
@@ -19,6 +21,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     LayerMask WhatIsGround;
+
+    // Call the healthManagerSO when the player loses health
+    [SerializeField]
+    HealthManagerSO healthManagerSO;
     Animator _Anim { get; set; }
     float _movementInput;
     bool _Sliding;
@@ -34,6 +40,8 @@ public class PlayerController : MonoBehaviour
         _Sliding = false;
         _Timer = 0.0f;
         _LastHorizontal = 0.0f;
+        flipEvent = new UnityEvent();
+        flipEvent.AddListener(playerIndicator.FlipIndicator);
     }
     // Start is called before the first frame update
     void Start()
@@ -80,11 +88,13 @@ public class PlayerController : MonoBehaviour
         {
             _Flipped = true;
             transform.Rotate(FlipRotation);
+            flipEvent.Invoke();
         }
         else if (horizontal > 0 && _Flipped)
         {
             _Flipped = false;
             transform.Rotate(-FlipRotation);
+            flipEvent.Invoke();
         }
     }
 
