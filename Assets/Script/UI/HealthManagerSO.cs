@@ -22,7 +22,13 @@ public class HealthManagerSO : ScriptableObject
 
     public void DecreaseHealth(int amount)
     {
-        health -= amount;
+        if (health - amount < 0)
+        {
+            health = 0;
+            // Player dead event triggered
+        } else {
+            health -= amount;
+        }
         healthChangeEvent.Invoke(health);
     }
 }
