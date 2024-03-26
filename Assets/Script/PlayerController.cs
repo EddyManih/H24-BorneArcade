@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-// Collision avec le sol
+    // Collision avec le sol
     void OnCollisionEnter2D(Collision2D coll)
     {
         // On s'assure de bien être en contact avec le sol
