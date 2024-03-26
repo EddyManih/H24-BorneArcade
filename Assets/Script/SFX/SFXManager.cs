@@ -3,7 +3,6 @@ using UnityEngine;
 public class SFXManager : MonoBehaviour {
   public SFXChannelSO sfxChannel;
   public AudioClip[] sfx;
-  public AudioSource sfxSource;
   public float volumeScale = 1f;
 
   private void Awake() {
@@ -12,7 +11,7 @@ public class SFXManager : MonoBehaviour {
     }
   }
 
-  private void PlaySFX() {
+  private void PlaySFX(AudioSource sfxSource) {
     foreach (AudioClip clip in sfx) {
       sfxSource.PlayOneShot(clip, volumeScale);
     }
