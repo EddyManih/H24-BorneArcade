@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class UIHealthBarManager : MonoBehaviour
 {
@@ -24,16 +23,6 @@ public class UIHealthBarManager : MonoBehaviour
     {
         healthManagerSO.healthChangeEvent.RemoveListener(ChangeSliderValue);
     }
-
-    // TO BE REMOVED
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            healthManagerSO.DecreaseHealth(10);
-        }
-    }
-    //
 
     private float ConvertIntToFloatDecimal(int amount)
     {
