@@ -12,30 +12,35 @@ public class PlayerController : MonoBehaviour
     private UnityEvent flipEvent;
 
     // Valeurs exposées
-    [SerializeField] PlayerIndicator playerIndicator;
     [SerializeField]
-    float MoveSpeed = 5.0f;
+    private int playerIndex;
 
     [SerializeField]
-    float JumpForce = 9.0f;
+    private PlayerIndicator playerIndicator;
 
     [SerializeField]
-    LayerMask WhatIsGround;
+    private float MoveSpeed = 5.0f;
+
+    [SerializeField]
+    private float JumpForce = 9.0f;
+
+    [SerializeField]
+    private LayerMask WhatIsGround;
 
     // Call the healthManagerSO when the player loses health
     [SerializeField]
-    HealthManagerSO healthManagerSO;
-    Animator _Anim { get; set; }
-    float _movementInput;
-    bool _Sliding;
-    bool movementEnabled {get; set; }
-    Rigidbody2D _Rb { get; set; }
-    bool _Grounded { get; set; }
-    bool _Flipped { get; set; }
-    bool _IsDoubleJump {get; set;}
-    bool _IsJump {get; set;}
-     bool _jumpInput;
-     bool _fallInput;
+    private HealthManagerSO healthManagerSO;
+    private Animator _Anim { get; set; }
+    private float _movementInput;
+    private bool _Sliding;
+    private bool movementEnabled {get; set; }
+    private Rigidbody2D _Rb { get; set; }
+    private bool _Grounded { get; set; }
+    private bool _Flipped { get; set; }
+    private bool _IsDoubleJump {get; set;}
+    private bool _IsJump {get; set;}
+    private bool _jumpInput;
+    private bool _fallInput;
 
     void Awake() {
         _Anim = GetComponent<Animator>();
@@ -72,6 +77,12 @@ public class PlayerController : MonoBehaviour
         FlipCharacter(horizontal);
         _Timer += Time.deltaTime;
     }
+
+    public int GetPlayerIndex()
+    {
+        return playerIndex;
+    }
+
     void Jump()
 {
     if (_Grounded && !_IsJump)
