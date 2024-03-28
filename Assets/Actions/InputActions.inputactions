@@ -123,7 +123,7 @@
                 {
                     "name": "negative",
                     "id": "3318a9f1-051b-480a-9974-33dcfa151c4a",
-                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/left",
+                    "path": "<Joystick>/stick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -134,7 +134,7 @@
                 {
                     "name": "positive",
                     "id": "63d1a290-8b62-4972-899d-d4747d26c0c2",
-                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/right",
+                    "path": "<Joystick>/stick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

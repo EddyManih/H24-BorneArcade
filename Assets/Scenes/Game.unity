@@ -377,7 +377,15 @@ MonoBehaviour:
       m_Id: b925b368-3507-4839-8e3c-6ff4258e77d3
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 0899eca9-ac48-4289-88b9-83f2c8981aed
+        m_Path: <Joystick>/stick
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 4926802345582677336, guid: 12b6c0c527d87294c98d1086fcfa8422, type: 3}

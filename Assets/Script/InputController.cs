@@ -15,12 +15,25 @@ public class InputController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
         int index = playerInput.playerIndex;
+        // Pour debug les input devices
+        /* 
         foreach (InputDevice device in playerInput.devices)
         {
             Debug.Log(device.ToString());
+            Debug.Log(device.ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  "));
         }
-        playerController = playerControllers.FirstOrDefault(c => {
-            return c.GetPlayerIndex() == index;
+        */
+        playerController = playerControllers.FirstOrDefault(player => {
+            // Pour la borne
+            // ----------------------------------------
+            if (playerInput.devices[0].ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  ")) return player.GetPlayerIndex() == 0;
+            else return player.GetPlayerIndex() == 1;
+            // ----------------------------------------
+
+            // Pour tester avec le clavier ou des manettes
+            // ----------------------------------------
+            // return player.GetPlayerIndex() == index;
+            // ----------------------------------------
         });
     }
 
