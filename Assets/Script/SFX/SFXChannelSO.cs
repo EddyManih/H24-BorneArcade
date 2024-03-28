@@ -3,11 +3,12 @@ using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Events/SFX Channel")]
 public class SFXChannelSO : ScriptableObject {
-  public UnityAction<AudioSource> OnPlaySFXRequested;
+  public UnityAction OnPlaySFXRequested;
+  public AudioSource clip;
 
-  public void RaisePlaySFXEvent(AudioSource clip) {
+  public void RaisePlaySFXEvent() {
     if (OnPlaySFXRequested != null) {
-      OnPlaySFXRequested.Invoke(clip);
+      OnPlaySFXRequested.Invoke();
     }
   }
 }

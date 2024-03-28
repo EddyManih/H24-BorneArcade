@@ -11,9 +11,14 @@ public class SFXManager : MonoBehaviour {
     }
   }
 
-  private void PlaySFX(AudioSource sfxSource) {
+  private void PlaySFX() {
     foreach (AudioClip clip in sfx) {
-      sfxSource.PlayOneShot(clip, volumeScale);
+      GameObject sfxObject = new GameObject("sfxObject");
+      AudioSource audioSource = sfxObject.AddComponent<AudioSource>();
+      audioSource.clip = clip;
+      audioSource.volume = volumeScale;
+      audioSource.Play();
+      Destroy(sfxObject, clip.length);
     }
   }
 }
