@@ -11,7 +11,6 @@ public class VFXController : MonoBehaviour {
     RaycastHit2D hit =
         Physics2D.Raycast(origin, direction, groundCheckDistance, groundLayer);
     if (hit.collider != null) {
-      Debug.Log("Landing");
       vfxChannel.RaiseLandingEvent(hit.point);
     }
   }
