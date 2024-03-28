@@ -158,7 +158,6 @@ GameObject:
   - component: {fileID: 5849798852416645481}
   - component: {fileID: 7135838742948158219}
   - component: {fileID: 2533068968850662050}
-  - component: {fileID: 3498377130857648942}
   - component: {fileID: 434286439225731815}
   - component: {fileID: 8742607318002024622}
   - component: {fileID: 2387946581149393042}
@@ -258,52 +257,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3498377130857648942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5807346407231833850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9774d7f0c6416e4e8a36d0d743db79d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HorizontalMovement:
-    m_Name: Horizontal Movement
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 4abb320a-9407-41f9-b486-dd7ab8d37b98
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 1D Axis
-      m_Id: 5f1fa759-ac95-410a-ade9-ba069a59b035
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Horizontal Movement
-      m_Flags: 4
-    - m_Name: negative
-      m_Id: b080b536-c19f-4d08-8d1f-1135cb859f8a
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Horizontal Movement
-      m_Flags: 8
-    - m_Name: positive
-      m_Id: 37f2b862-c503-465f-b0a4-a6b10a2089f5
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Horizontal Movement
-      m_Flags: 8
-    m_Flags: 0
-  playerController: {fileID: 434286439225731815}
 --- !u!114 &434286439225731815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,12 +269,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cdcce2d969165249be8592992818c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 1
   playerIndicator: {fileID: 3452895197726991973}
   MoveSpeed: 5
   JumpForce: 9
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  healthManagerSO: {fileID: 0}
 --- !u!50 &8742607318002024622
 Rigidbody2D:
   serializedVersion: 4
