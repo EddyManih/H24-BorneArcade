@@ -4,7 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HealthManagerSO", menuName = "ScriptableObjets/Health Manager")]
 public class HealthManagerSO : ScriptableObject
 {
-    public int health = 100;
+    public int health;
+    private bool alive;
 
     [SerializeField] private int maxHealth = 100;
 
@@ -13,6 +14,7 @@ public class HealthManagerSO : ScriptableObject
     private void OnEnable()
     {
         health = maxHealth;
+        alive = true;
 
         if (healthChangeEvent == null)
         {
@@ -22,7 +24,14 @@ public class HealthManagerSO : ScriptableObject
 
     public void DecreaseHealth(int amount)
     {
-        health -= amount;
+        if (health - amount < 0 && alive)
+        {
+            health = 0;
+            alive = false;
+            // Player dead event triggered
+        } else {
+            health -= amount;
+        }
         healthChangeEvent.Invoke(health);
     }
 }
