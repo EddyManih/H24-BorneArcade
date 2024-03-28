@@ -337,14 +337,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5807346407231833850, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 507073313}
+      addedObject: {fileID: 507073321}
   m_SourcePrefab: {fileID: 100100000, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
 --- !u!1 &507073305 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5807346407231833850, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
   m_PrefabInstance: {fileID: 240808698}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &507073313
+--- !u!114 &507073321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,10 +357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfxChannel: {fileID: 11400000, guid: c2f5c232d6b69b314af962bfb556f85b, type: 2}
-  groundCheckDistance: 0.1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &596067372
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +482,7 @@ MonoBehaviour:
   collisionVFX:
   - {fileID: 0}
   landingVFX:
-  - {fileID: 0}
+  - {fileID: 921832570}
 --- !u!4 &830246003
 Transform:
   m_ObjectHideFlags: 0
@@ -611,7 +607,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -848,7 +844,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
