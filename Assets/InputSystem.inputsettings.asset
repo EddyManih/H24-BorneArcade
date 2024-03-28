@@ -15,6 +15,7 @@ MonoBehaviour:
   m_SupportedDevices:
   - Keyboard
   - Gamepad
+  - 'HID::DragonRise Inc.   Generic   USB  Joystick  '
   m_UpdateMode: 1
   m_MaxEventBytesPerUpdate: 5242880
   m_MaxQueuedEventsPerUpdate: 1000

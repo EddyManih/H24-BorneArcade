@@ -15,6 +15,10 @@ public class InputController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
         int index = playerInput.playerIndex;
+        foreach (InputDevice device in playerInput.devices)
+        {
+            Debug.Log(device.ToString());
+        }
         playerController = playerControllers.FirstOrDefault(c => {
             return c.GetPlayerIndex() == index;
         });
