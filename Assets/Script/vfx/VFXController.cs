@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class VFXController : MonoBehaviour {
   public VFXChannelSO vfxChannel;
+  public PlayerController playerController;
 
   private int _floorLayer = 3;
 
-  void Update() {
-    if (gameObject.GetComponent<PlayerController>()._Sliding) {
-      vfxChannel.RaiseSlidingEvent(gameObject.transform.position);
-    }
+  void Start() {
+    playerController = gameObject.GetComponent<PlayerController>();
+    PlayerController.OnSlideTriggered += OnSlideTriggered;
   }
 
   void OnCollisionEnter2D(Collision2D collision) {
@@ -16,6 +16,10 @@ public class VFXController : MonoBehaviour {
       Vector2 collisionCenter = GetCollisionCenter(collision);
       vfxChannel.RaiseLandingEvent(collisionCenter);
     }
+  }
+
+  void OnSlideTriggered() {
+    vfxChannel.RaiseSlidingEvent(gameObject.transform.position);
   }
 
   private Vector3 GetCollisionCenter(Collision2D collision) {

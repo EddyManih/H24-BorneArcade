@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour {
   bool _jumpInput;
   bool _fallInput;
 
+  public delegate void SlideTriggered();
+  public static event SlideTriggered OnSlideTriggered;
+
   void Awake() {
     _Anim = GetComponent<Animator>();
     _Rb = GetComponent<Rigidbody2D>();
@@ -150,6 +153,10 @@ public class PlayerController : MonoBehaviour {
       _Sliding = true;
       _Timer = 0.0f;
       _Anim.SetBool("Sliding", _Sliding);
+
+      if (OnSlideTriggered != null) {
+        OnSlideTriggered();
+      }
     }
   }
 }
