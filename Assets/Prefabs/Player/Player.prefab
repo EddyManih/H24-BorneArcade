@@ -322,6 +322,7 @@ MonoBehaviour:
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  healthManagerPrefab: {fileID: 11400000, guid: 5e46895bd173fde48a80c2e6e32cbc78, type: 2}
 --- !u!50 &8742607318002024622
 Rigidbody2D:
   serializedVersion: 4
