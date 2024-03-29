@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         var horizontal = movementEnabled ? _movementInput * MoveSpeed : 0;
-         if( _jumpInput){
+        if( _jumpInput){
             _jumpInput = false;
             Jump();
         }
@@ -87,10 +87,10 @@ public class PlayerController : MonoBehaviour
 {
     if (_Grounded && !_IsJump)
     {
-        // _Anim.SetBool("Jump", !_IsJump);
         _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
         _Grounded = false;
         _IsJump = true;
+        _Anim.SetTrigger("Jump");
         _Anim.SetBool("Grounded", _Grounded);
         _jumpInput = false; // Reset jump input
         Debug.Log("is jumping: " + _jumpInput);
@@ -98,9 +98,10 @@ public class PlayerController : MonoBehaviour
     }
     else if (!_Grounded && !_IsDoubleJump && _IsJump)
     {
-        // _Anim.SetBool("DoubleJump", !_IsDoubleJump);
         _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+        _IsJump = false;
         _IsDoubleJump = true;
+        _Anim.SetTrigger("DoubleJump");
         _jumpInput = false; // Reset jump input
     }
 }
