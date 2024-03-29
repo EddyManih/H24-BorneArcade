@@ -8,6 +8,7 @@ public class VFXManager : MonoBehaviour
     public VFXChannelSO vfxChannel;
     public ParticleSystem[] landingVFX;
     public ParticleSystem[] slidingVFX;
+    public ParticleSystem[] runningVFX;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class VFXManager : MonoBehaviour
         {
             vfxChannel.OnLandingVFXRequested += PlayLandingVFX;
             vfxChannel.OnSlidingVFXRequested += PlaySlidingVFX;
+            vfxChannel.OnRunningVFXRequested += PlayRunningVFX;
         }
 
     }
@@ -25,6 +27,7 @@ public class VFXManager : MonoBehaviour
         {
             vfxChannel.OnLandingVFXRequested -= PlayLandingVFX;
             vfxChannel.OnSlidingVFXRequested -= PlaySlidingVFX;
+            vfxChannel.OnRunningVFXRequested -= PlayRunningVFX;
         }
     }
 
@@ -41,6 +44,16 @@ public class VFXManager : MonoBehaviour
     private void PlaySlidingVFX(Vector3 position)
     {
         foreach (ParticleSystem vfx in slidingVFX)
+        {
+            ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
+            newVfx.Play();
+            Destroy(newVfx.gameObject, newVfx.main.duration);
+        }
+    }
+
+    private void PlayRunningVFX(Vector3 position)
+    {
+        foreach (ParticleSystem vfx in runningVFX)
         {
             ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
             newVfx.Play();

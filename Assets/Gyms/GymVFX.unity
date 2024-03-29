@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &303117002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5807346407231833850, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+  m_PrefabInstance: {fileID: 1652780416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &303117005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 434286439225731815, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+  m_PrefabInstance: {fileID: 1652780416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303117002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cdcce2d969165249be8592992818c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &303117009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303117002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b544d4de17f6894fbbb7b25bf196832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxChannel: {fileID: 11400000, guid: c2f5c232d6b69b314af962bfb556f85b, type: 2}
+  playerController: {fileID: 303117005}
 --- !u!1 &627502697
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,8 +622,16 @@ PrefabInstance:
     - {fileID: 4047834808440771340, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
     - {fileID: 5044731389296166773, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5807346407231833850, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 303117009}
   m_SourcePrefab: {fileID: 100100000, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+--- !u!198 &1809314423 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 926052548477321877, guid: ff3fb51e0ce6f524c98df2a08f78b7d6, type: 3}
+  m_PrefabInstance: {fileID: 5790871192511655195}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5790871192511655195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -645,6 +683,22 @@ PrefabInstance:
     - target: {fileID: 3141793724347947086, guid: ff3fb51e0ce6f524c98df2a08f78b7d6, type: 3}
       propertyPath: m_Name
       value: vfxManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3193340112930464911, guid: ff3fb51e0ce6f524c98df2a08f78b7d6, type: 3}
+      propertyPath: m_Name
+      value: RunningVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176390370060551873, guid: ff3fb51e0ce6f524c98df2a08f78b7d6, type: 3}
+      propertyPath: runningVFX.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176390370060551873, guid: ff3fb51e0ce6f524c98df2a08f78b7d6, type: 3}
+      propertyPath: runningVFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 1809314423}
+    - target: {fileID: 5176390370060551873, guid: ff3fb51e0ce6f524c98df2a08f78b7d6, type: 3}
+      propertyPath: slidingVFX.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2294966423515935381}
   - component: {fileID: 4684314790640667159}
   m_Layer: 0
-  m_Name: SlidingVFX
+  m_Name: RunningVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2

@@ -13,6 +13,7 @@ public class VFXController : MonoBehaviour
         playerController = gameObject.GetComponent<PlayerController>();
         PlayerController.OnSlideTriggered += OnSlideTriggered;
         StartCoroutine(RaiseSlidingEvent());
+        StartCoroutine(RaiseRunningEvent());
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -46,6 +47,23 @@ public class VFXController : MonoBehaviour
             if (playerController._Sliding)
             {
                 vfxChannel.RaiseSlidingEvent(gameObject.transform.position);
+            }
+
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    private IEnumerator RaiseRunningEvent()
+    {
+
+        while (true)
+        {
+            if (Mathf.Abs(gameObject.GetComponent<Rigidbody2D>().velocity.x) > 0)
+            {
+                Vector3 position = gameObject.transform.position;
+                position.x = gameObject.GetComponent<BoxCollider2D>().bounds.min.x;
+                position.y = gameObject.GetComponent<BoxCollider2D>().bounds.min.y;
+                vfxChannel.RaiseRunningEvent(position);
             }
 
             yield return new WaitForSeconds(0.2f);
