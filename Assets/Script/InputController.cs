@@ -1,41 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 public class InputController : MonoBehaviour
 {
-    [SerializeField] private InputAction HorizontalMovement;
-    [SerializeField] private PlayerController playerController;
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Logic when movement key is pressed
-        HorizontalMovement.performed += OnMovementPerformed;
-        // Logic when movement key is released
-        HorizontalMovement.canceled  += OnMovementPerformed;
+    private PlayerController playerController;
+    private PlayerInput playerInput;
 
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
+        // Debug.Log(playerControllers.Length.ToString());
+        int index = playerInput.playerIndex;
+        // Pour debug les input devices
+        /* 
+        foreach (InputDevice device in playerInput.devices)
+        {
+            Debug.Log(device.ToString());
+            Debug.Log(device.ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  "));
+        }
+        */
+        playerController = playerControllers.FirstOrDefault(player => {
+            // Pour la borne
+            // ----------------------------------------
+            // if (playerInput.devices[0].ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  ")) return player.GetPlayerIndex() == 0;
+            // else return player.GetPlayerIndex() == 1;
+            // ----------------------------------------
+
+            // Pour tester avec le clavier ou des manettes
+            // ----------------------------------------
+            return player.GetPlayerIndex() == index;
+            // ----------------------------------------
+        });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnMovementPerformed(InputAction.CallbackContext context)
+    public void OnMovementPerformed(InputAction.CallbackContext context)
     {
         float movement = context.ReadValue<float>();
         playerController.OnMovementInput(movement);
     }
-
-    private void OnEnable()
+    public void OnJumpPerformed(InputAction.CallbackContext context)
     {
-        HorizontalMovement.Enable();
+        bool jump = (context.ReadValue<float>() > 0.5f);
+        playerController.OnJumpInput(jump);
+    }
+    public void OnFallPerformed(InputAction.CallbackContext context)
+    {
+       bool fall = (context.ReadValue<float>() > 0.5f);
+        playerController.OnFallInput(fall);
     }
 
-    private void OnDisable()
+    public void OnSlideTogglePerformed(InputAction.CallbackContext context)
     {
-        HorizontalMovement.Disable();
+        playerController.OnSlide();
     }
 }
