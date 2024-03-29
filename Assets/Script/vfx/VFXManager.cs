@@ -27,10 +27,9 @@ public class VFXManager : MonoBehaviour {
     }
   }
 
-  private void PlaySlidingVFX() {
+  private void PlaySlidingVFX(Vector3 position) {
     foreach (ParticleSystem vfx in slidingVFX) {
-      ParticleSystem newVfx =
-          Instantiate(vfx, transform.position, Quaternion.identity);
+      ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
       newVfx.Play();
       Destroy(newVfx.gameObject, newVfx.main.duration);
     }

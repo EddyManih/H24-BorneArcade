@@ -7,7 +7,7 @@ public class VFXController : MonoBehaviour {
 
   void Update() {
     if (gameObject.GetComponent<PlayerController>()._Sliding) {
-      vfxChannel.RaiseSlidingEvent();
+      vfxChannel.RaiseSlidingEvent(gameObject.transform.position);
     }
   }
 

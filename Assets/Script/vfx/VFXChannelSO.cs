@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Events/VFX Channel")]
 public class VFXChannelSO : ScriptableObject {
   public UnityAction<Vector3> OnLandingVFXRequested;
-  public UnityAction OnSlidingVFXRequested;
+  public UnityAction<Vector3> OnSlidingVFXRequested;
 
   public void RaiseLandingEvent(Vector3 position) {
     if (OnLandingVFXRequested != null) {
@@ -12,9 +12,9 @@ public class VFXChannelSO : ScriptableObject {
     }
   }
 
-  public void RaiseSlidingEvent() {
+  public void RaiseSlidingEvent(Vector3 position) {
     if (OnSlidingVFXRequested != null) {
-      OnSlidingVFXRequested.Invoke();
+      OnSlidingVFXRequested.Invoke(position);
     }
   }
 }
