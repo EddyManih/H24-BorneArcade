@@ -1,76 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 public class InputController : MonoBehaviour
 {
-    [SerializeField] private InputAction HorizontalMovement;
-    [SerializeField] private InputAction JumpInput;
-    [SerializeField] private InputAction FallInput;
-    [SerializeField] private InputAction SlideToggle;
-    [SerializeField] private PlayerController playerController;
-    // Start is called before the first frame update
-    void Start()
+    private PlayerController playerController;
+    private PlayerInput playerInput;
+
+    private void Awake()
     {
-        // Logic when movement key is pressed
-        HorizontalMovement.performed += OnMovementPerformed;
-        // Logic when movement key is released
-        HorizontalMovement.canceled  += OnMovementPerformed;
+        playerInput = GetComponent<PlayerInput>();
+        PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
+        int index = playerInput.playerIndex;
+        // Pour debug les input devices
+        /* 
+        foreach (InputDevice device in playerInput.devices)
+        {
+            Debug.Log(device.ToString());
+            Debug.Log(device.ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  "));
+        }
+        */
+        playerController = playerControllers.FirstOrDefault(player => {
+            // Pour la borne
+            // ----------------------------------------
+            // if (playerInput.devices[0].ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  ")) return player.GetPlayerIndex() == 0;
+            // else return player.GetPlayerIndex() == 1;
+            // ----------------------------------------
 
-        //Logic when slide toggle is performed
-        SlideToggle.performed += OnSlideTogglePerformed;
-
-        JumpInput.performed += OnJumpPerformed;
-        // Logic when movement key is released
-        JumpInput.canceled  += OnJumpPerformed;
-
-        FallInput.performed += OnFallPerformed;
-        // Logic when movement key is released
-        FallInput.canceled  += OnFallPerformed;
-
+            // Pour tester avec le clavier ou des manettes
+            // ----------------------------------------
+            return player.GetPlayerIndex() == index;
+            // ----------------------------------------
+        });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnMovementPerformed(InputAction.CallbackContext context)
+    public void OnMovementPerformed(InputAction.CallbackContext context)
     {
         float movement = context.ReadValue<float>();
         playerController.OnMovementInput(movement);
     }
-    private void OnJumpPerformed(InputAction.CallbackContext context)
+    public void OnJumpPerformed(InputAction.CallbackContext context)
     {
         bool jump = (context.ReadValue<float>() > 0.5f);
         playerController.OnJumpInput(jump);
     }
-    private void OnFallPerformed(InputAction.CallbackContext context)
+    public void OnFallPerformed(InputAction.CallbackContext context)
     {
        bool fall = (context.ReadValue<float>() > 0.5f);
         playerController.OnFallInput(fall);
     }
 
-    private void OnSlideTogglePerformed(InputAction.CallbackContext context)
+    public void OnSlideTogglePerformed(InputAction.CallbackContext context)
     {
         playerController.OnSlide();
-    }
-
-    private void OnEnable()
-    {
-        HorizontalMovement.Enable();
-        SlideToggle.Enable();
-        JumpInput.Enable();
-        FallInput.Enable();
-    }
-
-    private void OnDisable()
-    {
-        HorizontalMovement.Disable();
-        SlideToggle.Disable();
-        JumpInput.Enable();
-        FallInput.Enable();
     }
 }
