@@ -14,6 +14,7 @@ public class InputController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
+        // Debug.Log(playerControllers.Length.ToString());
         int index = playerInput.playerIndex;
         // Pour debug les input devices
         /* 
