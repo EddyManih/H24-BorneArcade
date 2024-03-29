@@ -11,12 +11,8 @@ public class UIHealthBarManager : MonoBehaviour
 
     private void Start()
     {
-        ChangeSliderValue(playerController.healthManagerSO.health);
-    }
-
-    private void OnEnable()
-    {
         playerController.healthManagerSO.damageTakenEvent.AddListener(ChangeSliderValue);
+        ChangeSliderValue(playerController.healthManagerSO.health);
     }
 
     private void OnDisable()
