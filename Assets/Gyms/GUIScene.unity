@@ -455,10 +455,6 @@ PrefabInstance:
       propertyPath: WhatIsAttack.m_Bits
       value: 64
       objectReference: {fileID: 0}
-    - target: {fileID: 434286439225731815, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
-      propertyPath: healthManagerPrefab
-      value: 
-      objectReference: {fileID: 11400000, guid: 5e46895bd173fde48a80c2e6e32cbc78, type: 2}
     - target: {fileID: 3498377130857648942, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: VerticalMovement.m_Name
       value: Vertical Movement
@@ -505,10 +501,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5849798852416645481, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8742607318002024622, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
-      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
