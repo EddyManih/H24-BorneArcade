@@ -9,17 +9,11 @@ public class VFXChannelSO : ScriptableObject
 
     public void RaiseLandingEvent(Vector3 position)
     {
-        if (OnLandingVFXRequested != null)
-        {
-            OnLandingVFXRequested.Invoke(position);
-        }
+        OnLandingVFXRequested?.Invoke(position);
     }
 
     public void RaiseSlidingEvent(Vector3 position)
     {
-        if (OnSlidingVFXRequested != null)
-        {
-            OnSlidingVFXRequested.Invoke(position);
-        }
+        OnSlidingVFXRequested?.Invoke(position);
     }
 }
