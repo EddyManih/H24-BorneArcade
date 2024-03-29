@@ -55,15 +55,21 @@ public class VFXController : MonoBehaviour
 
     private IEnumerator RaiseRunningEvent()
     {
+        float yOffset = 0.1f;
 
         while (true)
         {
-            if (Mathf.Abs(gameObject.GetComponent<Rigidbody2D>().velocity.x) > 0)
+            Vector3 position = gameObject.transform.position;
+            position.y = gameObject.GetComponent<BoxCollider2D>().bounds.min.y + yOffset;
+
+            if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0)
             {
-                Vector3 position = gameObject.transform.position;
                 position.x = gameObject.GetComponent<BoxCollider2D>().bounds.min.x;
-                position.y = gameObject.GetComponent<BoxCollider2D>().bounds.min.y;
-                vfxChannel.RaiseRunningEvent(position);
+                vfxChannel.RaiseRunningEvent(position, true);
+            } else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
+            {
+                position.x = gameObject.GetComponent<BoxCollider2D>().bounds.max.x;
+                vfxChannel.RaiseRunningEvent(position, false);
             }
 
             yield return new WaitForSeconds(0.2f);

@@ -6,7 +6,8 @@ public class VFXChannelSO : ScriptableObject
 {
     public UnityAction<Vector3> OnLandingVFXRequested;
     public UnityAction<Vector3> OnSlidingVFXRequested;
-    public UnityAction<Vector3> OnRunningVFXRequested;
+    public delegate void RunningVFXEvent(Vector3 position, bool direction); //Running right is true, running left is false
+    public RunningVFXEvent OnRunningVFXRequested;
 
     public void RaiseLandingEvent(Vector3 position)
     {
@@ -18,8 +19,8 @@ public class VFXChannelSO : ScriptableObject
         OnSlidingVFXRequested?.Invoke(position);
     }
 
-    public void RaiseRunningEvent(Vector3 position)
+    public void RaiseRunningEvent(Vector3 position, bool direction)
     {
-        OnRunningVFXRequested?.Invoke(position);
+        OnRunningVFXRequested?.Invoke(position, direction);
     }
 }

@@ -51,11 +51,15 @@ public class VFXManager : MonoBehaviour
         }
     }
 
-    private void PlayRunningVFX(Vector3 position)
+    private void PlayRunningVFX(Vector3 position, bool direction)
     {
         foreach (ParticleSystem vfx in runningVFX)
         {
             ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
+            if (!direction)
+            {
+                newVfx.transform.Rotate(0, 180, 0);
+            }
             newVfx.Play();
             Destroy(newVfx.gameObject, newVfx.main.duration);
         }
