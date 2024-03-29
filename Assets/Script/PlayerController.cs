@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour {
     private HealthManagerSO healthManagerSO;
     private Animator _Anim { get; set; }
     private float _movementInput;
-    private bool _Sliding;
     private bool movementEnabled {get; set; }
     private Rigidbody2D _Rb { get; set; }
     private bool _Grounded { get; set; }
@@ -40,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     private bool _IsJump {get; set;}
     private bool _jumpInput;
     private bool _fallInput;
+    public bool _Sliding { get; private set; }
 
   public delegate void SlideTriggered();
   public static event SlideTriggered OnSlideTriggered;
