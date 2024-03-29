@@ -10,32 +10,36 @@ public class PlayerController : MonoBehaviour {
   // Valeurs privées
   private UnityEvent flipEvent;
 
-  // Valeurs exposées
-  [SerializeField]
-  PlayerIndicator playerIndicator;
-  [SerializeField]
-  float MoveSpeed = 5.0f;
+    // Valeurs exposées
+    [SerializeField]
+    private int playerIndex;
 
-  [SerializeField]
-  float JumpForce = 9.0f;
+    [SerializeField]
+    private PlayerIndicator playerIndicator;
 
-  [SerializeField]
-  LayerMask WhatIsGround;
+    [SerializeField]
+    private float MoveSpeed = 5.0f;
 
-  // Call the healthManagerSO when the player loses health
-  [SerializeField]
-  HealthManagerSO healthManagerSO;
-  Animator _Anim { get; set; }
-  float _movementInput;
-  public bool _Sliding { get; private set; }
-  bool movementEnabled { get; set; }
-  Rigidbody2D _Rb { get; set; }
-  bool _Grounded { get; set; }
-  bool _Flipped { get; set; }
-  bool _IsDoubleJump { get; set; }
-  bool _IsJump { get; set; }
-  bool _jumpInput;
-  bool _fallInput;
+    [SerializeField]
+    private float JumpForce = 9.0f;
+
+    [SerializeField]
+    private LayerMask WhatIsGround;
+
+    // Call the healthManagerSO when the player loses health
+    [SerializeField]
+    private HealthManagerSO healthManagerSO;
+    private Animator _Anim { get; set; }
+    private float _movementInput;
+    private bool _Sliding;
+    private bool movementEnabled {get; set; }
+    private Rigidbody2D _Rb { get; set; }
+    private bool _Grounded { get; set; }
+    private bool _Flipped { get; set; }
+    private bool _IsDoubleJump {get; set;}
+    private bool _IsJump {get; set;}
+    private bool _jumpInput;
+    private bool _fallInput;
 
   public delegate void SlideTriggered();
   public static event SlideTriggered OnSlideTriggered;
@@ -59,35 +63,46 @@ public class PlayerController : MonoBehaviour {
     _IsJump = false;
   }
 
-  // Update is called once per frame
-  void Update() {
-    var horizontal = movementEnabled ? _movementInput * MoveSpeed : 0;
-    if (_jumpInput) {
-      _jumpInput = false;
-      Jump();
+    // Update is called once per frame
+    void Update()
+    {
+        var horizontal = movementEnabled ? _movementInput * MoveSpeed : 0;
+         if( _jumpInput){
+            _jumpInput = false;
+            Jump();
+        }
+        if(_fallInput){
+            Fall();
+        }
+        HorizontalMove(horizontal);
+        FlipCharacter(horizontal);
+        _Timer += Time.deltaTime;
     }
-    if (_fallInput) {
-      Fall();
+
+    public int GetPlayerIndex()
+    {
+        return playerIndex;
     }
-    HorizontalMove(horizontal);
-    FlipCharacter(horizontal);
-    _Timer += Time.deltaTime;
-  }
-  void Jump() {
-    if (_Grounded && !_IsJump) {
-      // _Anim.SetBool("Jump", !_IsJump);
-      _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
-      _Grounded = false;
-      _IsJump = true;
-      _Anim.SetBool("Grounded", _Grounded);
-      _jumpInput = false; // Reset jump input
-      Debug.Log("is jumping: " + _jumpInput);
-      Debug.Log("is grounded: " + _Grounded);
-    } else if (!_Grounded && !_IsDoubleJump && _IsJump) {
-      // _Anim.SetBool("DoubleJump", !_IsDoubleJump);
-      _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
-      _IsDoubleJump = true;
-      _jumpInput = false; // Reset jump input
+
+    void Jump()
+{
+    if (_Grounded && !_IsJump)
+    {
+        // _Anim.SetBool("Jump", !_IsJump);
+        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+        _Grounded = false;
+        _IsJump = true;
+        _Anim.SetBool("Grounded", _Grounded);
+        _jumpInput = false; // Reset jump input
+        Debug.Log("is jumping: " + _jumpInput);
+        Debug.Log("is grounded: " + _Grounded);
+    }
+    else if (!_Grounded && !_IsDoubleJump && _IsJump)
+    {
+        // _Anim.SetBool("DoubleJump", !_IsDoubleJump);
+        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+        _IsDoubleJump = true;
+        _jumpInput = false; // Reset jump input
     }
   }
   void Fall() {
