@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField]
+    private int playerIndex;
+
     public Animator animator;
     public Collider2D[] attackHitboxes;
     public Collider2D[] hurtboxes;
@@ -20,11 +23,15 @@ public class PlayerAttack : MonoBehaviour
     
     
     
-    
+    public int GetPlayerIndex()
+    {
+        return playerIndex;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.J))
         {
             PunchAttack();
@@ -34,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
         {
             KatanaAttack();
         }
+        */
     }
 
     private void Awake()
@@ -41,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
         setActiveHurtbox(0);
     }
 
-    void PunchAttack()
+    public void PunchAttack()
     {
         if (!_canAttack)
             return;
@@ -51,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
         setActiveHurtbox(1);
     }
 
-    void KatanaAttack()
+    public void KatanaAttack()
     {
         if (!_canAttack)
             return;

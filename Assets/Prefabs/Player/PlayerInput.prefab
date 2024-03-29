@@ -126,7 +126,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2753135032626559597}
         m_TargetAssemblyTypeName: InputController, Assembly-CSharp
-        m_MethodName: OnMovementPerformed
+        m_MethodName: onKatana
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -136,13 +136,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 287b6bc6-3b76-4c27-9381-32f35feba7d4
-    m_ActionName: Player2Bindings/Horizontal Movement[/Keyboard/j,/Keyboard/l]
+    m_ActionId: 36ea714a-9937-47d8-9817-8087f0535612
+    m_ActionName: Player1Bindings/Punch[/Keyboard/j,/DualSenseGamepadHID/buttonSouth,/XInputControllerWindows1/buttonSouth]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2753135032626559597}
         m_TargetAssemblyTypeName: InputController, Assembly-CSharp
-        m_MethodName: OnJumpPerformed
+        m_MethodName: onKatana
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -152,40 +152,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 5ca4433c-a27f-41be-9229-4b51d77fc105
-    m_ActionName: Player2Bindings/Jump Input
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2753135032626559597}
-        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
-        m_MethodName: OnFallPerformed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: c2555514-a331-4b3d-a7a2-2c53e993a9db
-    m_ActionName: Player2Bindings/Fall Input
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2753135032626559597}
-        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
-        m_MethodName: OnSlideTogglePerformed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: aeb07e02-a9fe-4334-8e89-ed3df81b2d8e
-    m_ActionName: Player2Bindings/Slide Toggle
+    m_ActionId: 5b205ffe-2cf4-4750-9a93-e10511064817
+    m_ActionName: Player1Bindings/Katana[/Keyboard/k,/DualSenseGamepadHID/buttonWest,/XInputControllerWindows1/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player1Bindings
