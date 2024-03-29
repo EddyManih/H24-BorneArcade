@@ -5,50 +5,50 @@ using UnityEngine;
 
 public class VFXManager : MonoBehaviour
 {
-  public VFXChannelSO vfxChannel;
-  public ParticleSystem[] landingVFX;
-  public ParticleSystem[] slidingVFX;
+    public VFXChannelSO vfxChannel;
+    public ParticleSystem[] landingVFX;
+    public ParticleSystem[] slidingVFX;
 
-  private List<ParticleSystem> activeVFX;
+    private List<ParticleSystem> activeVFX;
 
-  private void Awake()
-  {
-    if (vfxChannel != null)
+    private void Awake()
     {
-      vfxChannel.OnLandingVFXRequested += PlayLandingVFX;
-      vfxChannel.OnSlidingVFXRequested += PlaySlidingVFX;
-    }
+        if (vfxChannel != null)
+        {
+            vfxChannel.OnLandingVFXRequested += PlayLandingVFX;
+            vfxChannel.OnSlidingVFXRequested += PlaySlidingVFX;
+        }
 
-    activeVFX = new List<ParticleSystem>();
-  }
+        activeVFX = new List<ParticleSystem>();
+    }
 
     private void OnDestroy()
-  {
-    if (vfxChannel != null)
     {
-      vfxChannel.OnLandingVFXRequested -= PlayLandingVFX;
-      vfxChannel.OnSlidingVFXRequested -= PlaySlidingVFX;
+        if (vfxChannel != null)
+        {
+            vfxChannel.OnLandingVFXRequested -= PlayLandingVFX;
+            vfxChannel.OnSlidingVFXRequested -= PlaySlidingVFX;
+        }
     }
-  }
 
-  private void PlayLandingVFX(Vector3 position)
-  {
-    foreach (ParticleSystem vfx in landingVFX)
+    private void PlayLandingVFX(Vector3 position)
     {
-      ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
-      newVfx.Play();
-      Destroy(newVfx.gameObject, newVfx.main.duration);
+        foreach (ParticleSystem vfx in landingVFX)
+        {
+            ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
+            newVfx.Play();
+            Destroy(newVfx.gameObject, newVfx.main.duration);
+        }
     }
-  }
 
-  private void PlaySlidingVFX(Vector3 position)
-  {
-    foreach (ParticleSystem vfx in slidingVFX)
+    private void PlaySlidingVFX(Vector3 position)
     {
-      ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
-      activeVFX.Add(newVfx);
-      newVfx.Play();
-      Destroy(newVfx.gameObject, newVfx.main.duration);
+        foreach (ParticleSystem vfx in slidingVFX)
+        {
+            ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
+            activeVFX.Add(newVfx);
+            newVfx.Play();
+            Destroy(newVfx.gameObject, newVfx.main.duration);
+        }
     }
-  }
 }
