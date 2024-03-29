@@ -6,7 +6,6 @@ public class VFXChannelSO : ScriptableObject
 {
   public UnityAction<Vector3> OnLandingVFXRequested;
   public UnityAction<Vector3> OnSlidingVFXRequested;
-  public UnityAction<Vector3> OnIsSlidingVFXRequested;
 
   public void RaiseLandingEvent(Vector3 position)
   {
@@ -21,14 +20,6 @@ public class VFXChannelSO : ScriptableObject
     if (OnSlidingVFXRequested != null)
     {
       OnSlidingVFXRequested.Invoke(position);
-    }
-  }
-
-  public void RaiseIsSlidingEvent(Vector3 position)
-  {
-    if (OnIsSlidingVFXRequested != null)
-    {
-      OnIsSlidingVFXRequested.Invoke(position);
     }
   }
 }
