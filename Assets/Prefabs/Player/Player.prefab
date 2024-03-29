@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cdcce2d969165249be8592992818c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIndex: 1
+  playerIndex: 0
   playerIndicator: {fileID: 3452895197726991973}
   MoveSpeed: 5
   JumpForce: 9
@@ -788,9 +788,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c27077c169deab4980494fbdd3b6eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 0
   animator: {fileID: 2533068968850662050}
-  attackHitboxes: []
-  hurtboxes: []
+  attackHitboxes:
+  - {fileID: 5532032155503211518}
+  - {fileID: 129229757493814936}
+  hurtboxes:
+  - {fileID: 7775324212210894457}
+  - {fileID: 1807410419077889841}
+  - {fileID: 1608286390228672382}
   punchDamage: 0
   katanaDamage: 0
   onPunchHit:

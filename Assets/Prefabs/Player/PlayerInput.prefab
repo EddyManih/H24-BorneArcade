@@ -126,7 +126,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2753135032626559597}
         m_TargetAssemblyTypeName: InputController, Assembly-CSharp
-        m_MethodName: onKatana
+        m_MethodName: onPunch
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
