@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     HealthManagerSO healthManagerSO;
     Animator _Anim { get; set; }
     float _movementInput;
-    bool _Sliding;
+    public bool _Sliding { get; private set; }
     bool movementEnabled {get; set; }
     Rigidbody2D _Rb { get; set; }
     bool _Grounded { get; set; }

@@ -5,6 +5,12 @@ public class VFXController : MonoBehaviour {
 
   private int _floorLayer = 3;
 
+  void Update() {
+    if (gameObject.GetComponent<PlayerController>()._Sliding) {
+      vfxChannel.RaiseSlidingEvent();
+    }
+  }
+
   void OnCollisionEnter2D(Collision2D collision) {
     if (collision.gameObject.layer == _floorLayer) {
       Vector2 collisionCenter = GetCollisionCenter(collision);
