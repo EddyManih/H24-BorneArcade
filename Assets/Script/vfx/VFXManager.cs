@@ -17,7 +17,6 @@ public class VFXManager : MonoBehaviour
     {
       vfxChannel.OnLandingVFXRequested += PlayLandingVFX;
       vfxChannel.OnSlidingVFXRequested += PlaySlidingVFX;
-      //vfxChannel.OnIsSlidingVFXRequested += MoveSlidingVFX;
     }
 
     activeVFX = new List<ParticleSystem>();
@@ -29,7 +28,6 @@ public class VFXManager : MonoBehaviour
     {
       vfxChannel.OnLandingVFXRequested -= PlayLandingVFX;
       vfxChannel.OnSlidingVFXRequested -= PlaySlidingVFX;
-      //vfxChannel.OnIsSlidingVFXRequested -= MoveSlidingVFX;
     }
   }
 
@@ -53,22 +51,4 @@ public class VFXManager : MonoBehaviour
       Destroy(newVfx.gameObject, newVfx.main.duration);
     }
   }
-
-//  private void MoveSlidingVFX(Vector3 position)
-//  {
-//    Vector3 offset = new(-0.5f, 0, 0);
-//
-//    for (int i = 0; i < activeVFX.Count; i++)
-//    {
-//      if (activeVFX[i] != null)
-//      {
-//        activeVFX[i].transform.position = position + offset;
-//      }
-//      else
-//      {
-//        activeVFX.RemoveAt(i);
-//        i--;
-//      }
-//    }
-//  }
 }
