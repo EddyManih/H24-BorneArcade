@@ -161,7 +161,8 @@ void Fall(){
 
     void DiedEvent()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        _Anim.SetTrigger("Died");
     }
 
     public void OnMovementInput(float movementInput)

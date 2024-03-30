@@ -18,9 +18,6 @@ public class PlayerAttack : MonoBehaviour
     public float punchDamage;
     public float katanaDamage;
 
-    [SerializeField]
-    public UnityEvent onPunchHit, onKatanaHit;
-
     private bool _canAttack = true;
     
     
@@ -33,17 +30,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            PunchAttack();
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            KatanaAttack();
-        }
-        */
+        
     }
 
     private void Awake()
@@ -90,19 +77,15 @@ public class PlayerAttack : MonoBehaviour
             if (c.transform.parent.parent == transform)
                 continue;
 
-            float damage = 0;
-            switch (c.name)
+            float damage = col.name switch
             {
-                case "PunchHitbox":
-                    damage = punchDamage;
-                    break;
-                case "KatanaHitbox":
-                    damage = katanaDamage;
-                    break;
-            }
+                "PunchHitbox" => punchDamage,
+                "KatanaHitbox" => katanaDamage,
+                _ => 0
+            };
 
             Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
-            c.transform.parent.parent.GetComponent<PlayerAttack>().onKatanaHit?.Invoke();
+            c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int) damage, gameObject);
         }
     }
 

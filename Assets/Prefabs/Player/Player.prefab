@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 5680315746631583415}
   - component: {fileID: 8435353387464335419}
   - component: {fileID: 5532032155503211518}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PunchHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,14 +799,8 @@ MonoBehaviour:
   - {fileID: 1807410419077889841}
   - {fileID: 1608286390228672382}
   firePoint: {fileID: 501222963646749481}
-  punchDamage: 0
-  katanaDamage: 0
-  onPunchHit:
-    m_PersistentCalls:
-      m_Calls: []
-  onKatanaHit:
-    m_PersistentCalls:
-      m_Calls: []
+  punchDamage: 10
+  katanaDamage: 40
 --- !u!1 &6574329916424964841
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,8 +828,8 @@ Transform:
   m_GameObject: {fileID: 6574329916424964841}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0128, y: -0.0129, z: 0}
-  m_LocalScale: {x: 0.1844, y: 0.3001, z: 1}
+  m_LocalPosition: {x: 0.0016, y: -0.0208, z: 0}
+  m_LocalScale: {x: 0.1556336, y: 0.3159153, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5937950308720823977}
@@ -979,7 +973,7 @@ GameObject:
   - component: {fileID: 255762496634570974}
   - component: {fileID: 5057934170183179825}
   - component: {fileID: 129229757493814936}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: KatanaHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,7 +1101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7137902072261569055}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hitboxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
