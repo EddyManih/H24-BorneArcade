@@ -13,6 +13,8 @@ public class PlayerAttack : MonoBehaviour
     public Collider2D[] attackHitboxes;
     public Collider2D[] hurtboxes;
 
+    public Transform firePoint;
+
     public float punchDamage;
     public float katanaDamage;
 
@@ -65,6 +67,15 @@ public class PlayerAttack : MonoBehaviour
             return;
         
         animator.SetTrigger("KatanaAttack");
+        _canAttack = false;
+    }
+    
+    public void GunAttack()
+    {
+        if (!_canAttack)
+            return;
+        
+        animator.SetTrigger("GunAttack");
         _canAttack = false;
     }
 

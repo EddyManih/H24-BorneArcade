@@ -82,4 +82,9 @@ public class InputController : MonoBehaviour
     {
         attackController.KatanaAttack();
     }
+    
+    public void onGun(InputAction.CallbackContext context)
+    {
+        attackController.GunAttack();
+    }
 }
