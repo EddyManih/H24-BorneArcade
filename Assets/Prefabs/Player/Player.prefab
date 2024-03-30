@@ -798,7 +798,7 @@ MonoBehaviour:
   - {fileID: 7775324212210894457}
   - {fileID: 1807410419077889841}
   - {fileID: 1608286390228672382}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 501222963646749481}
   punchDamage: 0
   katanaDamage: 0
   onPunchHit:
