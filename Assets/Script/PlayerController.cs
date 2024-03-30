@@ -8,23 +8,17 @@ public class PlayerController : MonoBehaviour
 
     private float _Timer;
     private float _LastHorizontal;
-    // Valeurs privées
     private UnityEvent flipEvent;
 
     // Valeurs exposées
     [SerializeField] private int playerIndex;
-
-    [SerializeField]
-    private PlayerIndicator playerIndicator;
-
+    [SerializeField] private PlayerIndicator playerIndicator;
     [SerializeField] private float MoveSpeed = 5.0f;
-
-    [SerializeField] float JumpForce = 9.0f;
-
-    [SerializeField] LayerMask WhatIsGround;
-    [SerializeField] HealthManagerSO healthManagerPrefab;
+    [SerializeField] private float JumpForce = 9.0f;
+    [SerializeField] private LayerMask WhatIsGround;
 
     // Call the healthManagerSO when the player loses health
+    [SerializeField] private HealthManagerSO healthManagerPrefab;
     [System.NonSerialized] public HealthManagerSO healthManagerSO;
 
     private Animator _Anim { get; set; }
@@ -48,7 +42,6 @@ public class PlayerController : MonoBehaviour
         _LastHorizontal = 0.0f;
         flipEvent = new UnityEvent();
         flipEvent.AddListener(playerIndicator.FlipIndicator);
-    
         healthManagerSO = Instantiate<HealthManagerSO>(healthManagerPrefab);
         healthManagerSO.DiedEvent.AddListener(DiedEvent);
     }
@@ -60,14 +53,14 @@ public class PlayerController : MonoBehaviour
         _Grounded = false;
         _Flipped = false;
         _IsDoubleJump = false;
-        _IsJump = false; 
+        _IsJump = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         var horizontal = _movementEnabled ? _movementInput * MoveSpeed : 0;
-         if( _jumpInput){
+        if( _jumpInput){
             _jumpInput = false;
             Jump();
         }
@@ -88,10 +81,10 @@ public class PlayerController : MonoBehaviour
 {
     if (_Grounded && !_IsJump)
     {
-        // _Anim.SetBool("Jump", !_IsJump);
         _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
         _Grounded = false;
         _IsJump = true;
+        _Anim.SetTrigger("Jump");
         _Anim.SetBool("Grounded", _Grounded);
         _jumpInput = false; // Reset jump input
         Debug.Log("is jumping: " + _jumpInput);
@@ -99,9 +92,10 @@ public class PlayerController : MonoBehaviour
     }
     else if (!_Grounded && !_IsDoubleJump && _IsJump)
     {
-        // _Anim.SetBool("DoubleJump", !_IsDoubleJump);
         _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+        _IsJump = false;
         _IsDoubleJump = true;
+        _Anim.SetTrigger("DoubleJump");
         _jumpInput = false; // Reset jump input
     }
 }
@@ -118,7 +112,7 @@ void Fall(){
             _Rb.velocity = new Vector2(horizontal, _Rb.velocity.y);
             _Anim.SetFloat("MoveSpeed", Mathf.Abs(horizontal));
         }
-        
+
         if (_Sliding)
         {
             _Rb.velocity = new Vector2(_LastHorizontal, _Rb.velocity.y);
