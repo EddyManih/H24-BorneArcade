@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cf46cd4465d8b0d4b8eb5c37e67721c5
+guid: 94308f5001259c741b163fa5a2a496a8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_0
+      name: slowed player katana attack-sheathe 80x64_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 291e6aaf88cd3724892b41735c3aaba4
-      internalID: 505526975
+      spriteID: 00689b185a67bf740ab709dba2e07ff6
+      internalID: -659116313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_1
+      name: slowed player katana attack-sheathe 80x64_1
       rect:
         serializedVersion: 2
         x: 80
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 432d7905e8d29774bb0f1d274355eece
-      internalID: -714552207
+      spriteID: bde3f206ab3bf4a4bacb58d7d045c647
+      internalID: -1485668273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_2
+      name: slowed player katana attack-sheathe 80x64_2
       rect:
         serializedVersion: 2
         x: 160
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8079189c66148194ea80980f753bacbd
-      internalID: 1504425839
+      spriteID: 1cf578f049eb35d4cb054a7b0a013966
+      internalID: 1162447045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_3
+      name: slowed player katana attack-sheathe 80x64_3
       rect:
         serializedVersion: 2
         x: 240
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb508f46f3ba47745bebd9e4ff863c18
-      internalID: -256488891
+      spriteID: d6a7128e46515fb40af5bd1104b2adcc
+      internalID: -1885967019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_4
+      name: slowed player katana attack-sheathe 80x64_4
       rect:
         serializedVersion: 2
         x: 320
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8131a51ed2436e44ab92d3706d6ab79
-      internalID: 2022607496
+      spriteID: a51ebea3652949c4689aba91faca0245
+      internalID: 344040549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_5
+      name: slowed player katana attack-sheathe 80x64_5
       rect:
         serializedVersion: 2
         x: 400
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3859a589b09f91d428ce440628a2db33
-      internalID: 1091989796
+      spriteID: 7c301ed33ab57aa4ba919f94e7cdbecc
+      internalID: 1564240169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_6
+      name: slowed player katana attack-sheathe 80x64_6
       rect:
         serializedVersion: 2
         x: 480
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d92edd6a5a99eb4e9f8c47ab4e58361
-      internalID: 1030888544
+      spriteID: 930702062aa42554caa971f62f098a7f
+      internalID: 582732217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_7
+      name: slowed player katana attack-sheathe 80x64_7
       rect:
         serializedVersion: 2
         x: 560
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a789ede14471cfa448510290a5ab7d6e
-      internalID: 645997672
+      spriteID: 5dc5af4e92399374f8c0d7cd6f27ecf3
+      internalID: 1818339293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_8
+      name: slowed player katana attack-sheathe 80x64_8
       rect:
         serializedVersion: 2
         x: 640
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a47d6c6df79ba74cb9fbd353309224a
-      internalID: 863297989
+      spriteID: 2b725f04f1744704e8cea31ede43fc54
+      internalID: 411545854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player katana attack-sheathe 80x64_9
+      name: slowed player katana attack-sheathe 80x64_9
       rect:
         serializedVersion: 2
         x: 720
@@ -313,8 +313,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 778c0a2b5dade0f46ae02fa45eb6941a
-      internalID: 691164677
+      spriteID: 0ca4ff8f322a7c94dbd523961114a374
+      internalID: -1631975069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slowed player katana attack-sheathe 80x64_10
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 80
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d74097fd596c514db4ebdd8811dd23b
+      internalID: -126746166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slowed player katana attack-sheathe 80x64_11
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 0
+        width: 80
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a62e2350d4e42746a516bf93bdd55ad
+      internalID: 1979153843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slowed player katana attack-sheathe 80x64_12
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 80
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe0496d1b7833de42a31e32cba679120
+      internalID: 1054475321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slowed player katana attack-sheathe 80x64_13
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 0
+        width: 80
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f3128b944eea146b038290d192fdf2
+      internalID: -2000953873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slowed player katana attack-sheathe 80x64_14
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 0
+        width: 80
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2177200a5c511044aea7f57d6a43d41
+      internalID: 585727969
       vertices: []
       indices: 
       edges: []
@@ -330,16 +435,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player katana attack-sheathe 80x64_0: 505526975
-      player katana attack-sheathe 80x64_1: -714552207
-      player katana attack-sheathe 80x64_2: 1504425839
-      player katana attack-sheathe 80x64_3: -256488891
-      player katana attack-sheathe 80x64_4: 2022607496
-      player katana attack-sheathe 80x64_5: 1091989796
-      player katana attack-sheathe 80x64_6: 1030888544
-      player katana attack-sheathe 80x64_7: 645997672
-      player katana attack-sheathe 80x64_8: 863297989
-      player katana attack-sheathe 80x64_9: 691164677
+      slowed player katana attack-sheathe 80x64_0: -659116313
+      slowed player katana attack-sheathe 80x64_1: -1485668273
+      slowed player katana attack-sheathe 80x64_10: -126746166
+      slowed player katana attack-sheathe 80x64_11: 1979153843
+      slowed player katana attack-sheathe 80x64_12: 1054475321
+      slowed player katana attack-sheathe 80x64_13: -2000953873
+      slowed player katana attack-sheathe 80x64_14: 585727969
+      slowed player katana attack-sheathe 80x64_2: 1162447045
+      slowed player katana attack-sheathe 80x64_3: -1885967019
+      slowed player katana attack-sheathe 80x64_4: 344040549
+      slowed player katana attack-sheathe 80x64_5: 1564240169
+      slowed player katana attack-sheathe 80x64_6: 582732217
+      slowed player katana attack-sheathe 80x64_7: 1818339293
+      slowed player katana attack-sheathe 80x64_8: 411545854
+      slowed player katana attack-sheathe 80x64_9: -1631975069
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
