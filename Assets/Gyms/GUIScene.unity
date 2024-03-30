@@ -198,6 +198,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35680193}
   m_CullTransparentMesh: 1
+--- !u!1 &78020908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 78020910}
+  - component: {fileID: 78020909}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &78020909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78020908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NotificationBehavior: 0
+  m_MaxPlayerCount: -1
+  m_AllowJoining: 1
+  m_JoinBehavior: 0
+  m_PlayerJoinedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_PlayerLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JoinAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 07aaf35d-b2ae-4289-979c-42a166fa0828
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PlayerPrefab: {fileID: 4926802345582677336, guid: 12b6c0c527d87294c98d1086fcfa8422, type: 3}
+  m_SplitScreen: 0
+  m_MaintainAspectRatioInSplitScreen: 0
+  m_FixedNumberOfSplitScreens: -1
+  m_SplitScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!4 &78020910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78020908}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.51341635, y: 2.0229776, z: 0.9845195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &102571663 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7756090183990857289, guid: 6b684e3efe9c47d488484290cc3bb636, type: 3}
@@ -443,6 +519,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 434286439225731815, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: playerIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 434286439225731815, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: healthManagerSO
       value: 
@@ -967,6 +1047,10 @@ PrefabInstance:
       propertyPath: HorizontalMovement.m_SingletonActionBindings.Array.data[2].m_Path
       value: <Keyboard>/rightArrow
       objectReference: {fileID: 0}
+    - target: {fileID: 4134018015679146750, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: m_text
+      value: P2
+      objectReference: {fileID: 0}
     - target: {fileID: 5807346407231833850, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: m_Name
       value: P2
@@ -1328,3 +1412,4 @@ SceneRoots:
   - {fileID: 1996448013}
   - {fileID: 396721937}
   - {fileID: 1377284781}
+  - {fileID: 78020910}
