@@ -101,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
                     break;
             }
 
-            Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
+            // Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
             c.transform.parent.parent.GetComponent<PlayerAttack>().onKatanaHit?.Invoke();
         }
     }

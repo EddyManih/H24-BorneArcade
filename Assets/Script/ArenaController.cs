@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ArenaController : MonoBehaviour
 {
@@ -20,5 +21,6 @@ public class ArenaController : MonoBehaviour
         {
             if (playerController) playerController.DisableMovement();
         }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
