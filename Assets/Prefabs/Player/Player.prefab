@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 5680315746631583415}
   - component: {fileID: 8435353387464335419}
   - component: {fileID: 5532032155503211518}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PunchHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,6 +704,7 @@ MonoBehaviour:
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  playerAttack: {fileID: 1538881625527342269}
   healthManagerPrefab: {fileID: 11400000, guid: 5e46895bd173fde48a80c2e6e32cbc78, type: 2}
 --- !u!50 &8742607318002024622
 Rigidbody2D:
@@ -799,8 +800,8 @@ MonoBehaviour:
   - {fileID: 1807410419077889841}
   - {fileID: 1608286390228672382}
   firePoint: {fileID: 501222963646749481}
-  punchDamage: 0
-  katanaDamage: 0
+  punchDamage: 10
+  katanaDamage: 20
   onPunchHit:
     m_PersistentCalls:
       m_Calls: []
@@ -979,7 +980,7 @@ GameObject:
   - component: {fileID: 255762496634570974}
   - component: {fileID: 5057934170183179825}
   - component: {fileID: 129229757493814936}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: KatanaHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

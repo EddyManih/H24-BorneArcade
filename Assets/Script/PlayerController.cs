@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float MoveSpeed = 5.0f;
     [SerializeField] private float JumpForce = 9.0f;
     [SerializeField] private LayerMask WhatIsGround;
+    [SerializeField] private PlayerAttack playerAttack;
 
     // Call the healthManagerSO when the player loses health
     [SerializeField] private HealthManagerSO healthManagerPrefab;
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour
         flipEvent.AddListener(playerIndicator.FlipIndicator);
         healthManagerSO = Instantiate<HealthManagerSO>(healthManagerPrefab);
         healthManagerSO.DiedEvent.AddListener(DiedEvent);
+        playerAttack.onPunchHit.AddListener(OnPunchHit);
+        playerAttack.onKatanaHit.AddListener(OnKatanaHit);
     }
 
     void Start()
@@ -189,6 +192,16 @@ void Fall(){
             _Timer = 0.0f;
             _Anim.SetBool("Sliding", _Sliding);
         }
+    }
+
+    void OnKatanaHit()
+    {
+        healthManagerSO.DamageTaken(playerAttack.katanaDamage);
+    }
+
+    void OnPunchHit()
+    {
+        healthManagerSO.DamageTaken(playerAttack.punchDamage);
     }
 
     public void DisableMovement()

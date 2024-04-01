@@ -15,8 +15,8 @@ public class PlayerAttack : MonoBehaviour
 
     public Transform firePoint;
 
-    public float punchDamage;
-    public float katanaDamage;
+    public int punchDamage;
+    public int katanaDamage;
 
     [SerializeField]
     public UnityEvent onPunchHit, onKatanaHit;
