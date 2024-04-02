@@ -7,21 +7,17 @@ public class UIHealthBarManager : MonoBehaviour
     [SerializeField] private Gradient gradient;
     [SerializeField] private Image fill;
 
-    [SerializeField] HealthManagerSO healthManagerSO;
+    [SerializeField] PlayerController playerController;
 
     private void Start()
     {
-        ChangeSliderValue(healthManagerSO.health);
-    }
-
-    private void OnEnable()
-    {
-        healthManagerSO.healthChangeEvent.AddListener(ChangeSliderValue);
+        playerController.healthManagerSO.damageTakenEvent.AddListener(ChangeSliderValue);
+        ChangeSliderValue(playerController.healthManagerSO.health);
     }
 
     private void OnDisable()
     {
-        healthManagerSO.healthChangeEvent.RemoveListener(ChangeSliderValue);
+        playerController.healthManagerSO.damageTakenEvent.RemoveListener(ChangeSliderValue);
     }
 
     private float ConvertIntToFloatDecimal(int amount)
