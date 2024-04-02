@@ -13,6 +13,7 @@ public class VFXController : MonoBehaviour
     {
         playerController = gameObject.GetComponent<PlayerController>();
         PlayerController.OnSlideTriggered += OnSlideTriggered;
+        PlayerAttack.OnKatanaTriggered += OnKatanaTriggered;
         StartCoroutine(RaiseSlidingEvent());
         StartCoroutine(RaiseRunningEvent());
     }
@@ -31,9 +32,12 @@ public class VFXController : MonoBehaviour
         vfxChannel.RaiseSlidingEvent(gameObject.transform.position);
     }
 
-    void OnKatanaTriggered(Vector3 position, bool direction)
+    void OnKatanaTriggered()
     {
-        vfxChannel.RaiseKatanaEvent(position, direction);
+        float yOffset = 0.1f;
+        Vector3 position = gameObject.transform.position;
+        position.y = gameObject.GetComponent<Collider2D>().bounds.min.y + yOffset;
+        vfxChannel.RaiseKatanaEvent(position, playerController._Flipped);
     }
 
     private Vector3 GetCollisionCenter(Collision2D collision)
@@ -76,12 +80,12 @@ public class VFXController : MonoBehaviour
             if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0)
             {
                 position.x = gameObject.GetComponent<BoxCollider2D>().bounds.min.x;
-                vfxChannel.RaiseRunningEvent(position, true);
+                vfxChannel.RaiseRunningEvent(position, false);
             }
             else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
             {
                 position.x = gameObject.GetComponent<BoxCollider2D>().bounds.max.x;
-                vfxChannel.RaiseRunningEvent(position, false);
+                vfxChannel.RaiseRunningEvent(position, true);
             }
 
             yield return new WaitForSeconds(0.2f);

@@ -54,28 +54,28 @@ public class VFXManager : MonoBehaviour
         }
     }
 
-    private void PlayRunningVFX(Vector3 position, bool direction)
+    private void PlayRunningVFX(Vector3 position, bool flipped)
     {
         foreach (ParticleSystem vfx in runningVFX)
         {
             ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
-            if (!direction)
+            if (flipped)
             {
-                newVfx.transform.Rotate(0, 180, 0);
+                newVfx.transform.localScale = new Vector3(-1f, 1f, 1f);
             }
             newVfx.Play();
             Destroy(newVfx.gameObject, newVfx.main.duration);
         }
     }
 
-    private void PlayKatanaVFX(Vector3 position, bool direction)
+    private void PlayKatanaVFX(Vector3 position, bool flipped)
     {
         foreach (ParticleSystem vfx in katanaVFX)
         {
             ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
-            if (!direction)
+            if (flipped)
             {
-                newVfx.transform.Rotate(0, 180, 0);
+                newVfx.transform.localScale = new Vector3(-1f, 1f, 1f);
             }
             newVfx.Play();
             Destroy(newVfx.gameObject, newVfx.main.duration);
