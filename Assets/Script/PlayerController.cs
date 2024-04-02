@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
-{
-    // Déclaration des constantes
-    private static readonly Vector2 FlipRotation = new Vector3(0, 180);
+public class PlayerController : MonoBehaviour {
+  // Déclaration des constantes
+  private static readonly Vector2 FlipRotation = new Vector3(0, 180);
 
     private float _Timer;
     private float _LastHorizontal;
@@ -24,16 +23,16 @@ public class PlayerController : MonoBehaviour
 
     private Animator _Anim { get; set; }
     private float _movementInput;
-
-    private bool _Sliding;
     private bool _movementEnabled {get; set; }
     private Rigidbody2D _Rb { get; set; }
-    private bool _Grounded { get; set; }
-    private bool _Flipped { get; set; }
     private bool _IsDoubleJump {get; set;}
     private bool _IsJump {get; set;}
     private bool _jumpInput;
     private bool _fallInput;
+
+    public bool _Flipped { get; private set; }
+    public bool _Grounded { get; private set; }
+    public bool _Sliding { get; private set; }
 
     void Awake() {
         _Anim = GetComponent<Animator>();
@@ -45,8 +44,6 @@ public class PlayerController : MonoBehaviour
         flipEvent.AddListener(playerIndicator.FlipIndicator);
         healthManagerSO = Instantiate<HealthManagerSO>(healthManagerPrefab);
         healthManagerSO.DiedEvent.AddListener(DiedEvent);
-        playerAttack.onPunchHit.AddListener(OnPunchHit);
-        playerAttack.onKatanaHit.AddListener(OnKatanaHit);
     }
 
     void Start()
@@ -62,6 +59,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(_Grounded);
         var horizontal = _movementEnabled ? _movementInput * MoveSpeed : 0;
         if( _jumpInput){
             _jumpInput = false;
@@ -81,32 +79,33 @@ public class PlayerController : MonoBehaviour
     }
 
     void Jump()
-{
-    if (_Grounded && !_IsJump)
     {
-        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
-        _Grounded = false;
-        _IsJump = true;
-        _Anim.SetTrigger("Jump");
-        _Anim.SetBool("Grounded", _Grounded);
-        _jumpInput = false; // Reset jump input
-        Debug.Log("is jumping: " + _jumpInput);
-        Debug.Log("is grounded: " + _Grounded);
+        if (_Grounded && !_IsJump)
+        {
+            _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+            //_Grounded = false;
+            _IsJump = true;
+            StopSliding();
+            _Anim.SetTrigger("Jump");
+            _Anim.SetBool("Grounded", false);
+            _jumpInput = false; // Reset jump input
+        }
+        else if (!_Grounded && !_IsDoubleJump && _IsJump)
+        {
+            _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+            _IsJump = false;
+            _IsDoubleJump = true;
+            _Anim.SetTrigger("DoubleJump");
+            _jumpInput = false; // Reset jump input
+        }
     }
-    else if (!_Grounded && !_IsDoubleJump && _IsJump)
+    void Fall()
     {
-        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
-        _IsJump = false;
-        _IsDoubleJump = true;
-        _Anim.SetTrigger("DoubleJump");
-        _jumpInput = false; // Reset jump input
+        if(!_Grounded){
+            _Rb.velocity = new Vector2(_Rb.velocity.x, -JumpForce);
+        }
     }
-}
-void Fall(){
-    if(!_Grounded){
-        _Rb.velocity = new Vector2(_Rb.velocity.x, -JumpForce);
-    }
-}
+
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
@@ -122,11 +121,16 @@ void Fall(){
 
             if (_Timer > 0.5f)
             {
-                _movementEnabled = true;
-                _Sliding = false;
-                _Anim.SetBool("Sliding", _Sliding);
+                StopSliding();
             }
         }
+    }
+
+    void StopSliding()
+    {
+        _movementEnabled = true;
+        _Sliding = false;
+        _Anim.SetBool("Sliding", _Sliding);
     }
 
     void FlipCharacter(float horizontal)
@@ -162,6 +166,16 @@ void Fall(){
         }
     }
 
+    private void OnCollisionExit2D(Collision2D coll)
+    {
+        // On s'assure de ne pas etre en contact avec sol
+        if ((WhatIsGround & (1 << coll.gameObject.layer)) == 0)
+            return;
+
+        _Grounded = false;
+
+    }
+
     void DiedEvent()
     {
         Destroy(gameObject);
@@ -184,7 +198,7 @@ void Fall(){
 
     public void OnSlide()
     {
-        if (Mathf.Abs(_movementInput) == 1)
+        if (Mathf.Abs(_movementInput) == 1 && !_Sliding)
         {
             _LastHorizontal = _movementInput * MoveSpeed;
             _movementEnabled = false;
