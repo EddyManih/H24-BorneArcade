@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 8742607318002024622}
   - component: {fileID: 2387946581149393042}
   - component: {fileID: 1538881625527342269}
+  - component: {fileID: 1058513455102940144}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -808,6 +809,21 @@ MonoBehaviour:
   onKatanaHit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1058513455102940144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807346407231833850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b544d4de17f6894fbbb7b25bf196832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxChannel: {fileID: 11400000, guid: c2f5c232d6b69b314af962bfb556f85b, type: 2}
+  playerController: {fileID: 434286439225731815}
+  playerAttack: {fileID: 1538881625527342269}
 --- !u!1 &6574329916424964841
 GameObject:
   m_ObjectHideFlags: 0

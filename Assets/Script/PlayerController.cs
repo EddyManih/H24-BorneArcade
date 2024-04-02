@@ -1,10 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
-{
-    // Déclaration des constantes
-    private static readonly Vector2 FlipRotation = new Vector3(0, 180);
+public class PlayerController : MonoBehaviour {
+  // Déclaration des constantes
+  private static readonly Vector2 FlipRotation = new Vector3(0, 180);
 
     private float _Timer;
     private float _LastHorizontal;
@@ -24,16 +23,16 @@ public class PlayerController : MonoBehaviour
 
     private Animator _Anim { get; set; }
     private float _movementInput;
-
-    private bool _Sliding;
     private bool _movementEnabled {get; set; }
     private Rigidbody2D _Rb { get; set; }
-    private bool _Grounded { get; set; }
-    private bool _Flipped { get; set; }
     private bool _IsDoubleJump {get; set;}
     private bool _IsJump {get; set;}
     private bool _jumpInput;
     private bool _fallInput;
+
+    public bool _Flipped { get; private set; }
+    public bool _Grounded { get; private set; }
+    public bool _Sliding { get; private set; }
 
     void Awake() {
         _Anim = GetComponent<Animator>();
