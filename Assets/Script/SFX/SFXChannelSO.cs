@@ -9,9 +9,6 @@ public class SFXChannelSO : ScriptableObject
 
     public void RaisePlaySFXEvent()
     {
-        if (OnPlaySFXRequested != null)
-        {
-            OnPlaySFXRequested.Invoke();
-        }
+        OnPlaySFXRequested?.Invoke();
     }
 }
