@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_Grounded);
         var horizontal = _movementEnabled ? _movementInput * MoveSpeed : 0;
         if( _jumpInput){
             _jumpInput = false;
@@ -85,14 +86,12 @@ public class PlayerController : MonoBehaviour
         if (_Grounded && !_IsJump)
         {
             _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
-            _Grounded = false;
+            //_Grounded = false;
             _IsJump = true;
             StopSliding();
             _Anim.SetTrigger("Jump");
-            _Anim.SetBool("Grounded", _Grounded);
+            _Anim.SetBool("Grounded", false);
             _jumpInput = false; // Reset jump input
-            Debug.Log("is jumping: " + _jumpInput);
-            Debug.Log("is grounded: " + _Grounded);
         }
         else if (!_Grounded && !_IsDoubleJump && _IsJump)
         {
@@ -170,6 +169,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit2D(Collision2D coll)
+    {
+        // On s'assure de ne pas etre en contact avec sol
+        if ((WhatIsGround & (1 << coll.gameObject.layer)) == 0)
+            return;
+
+        _Grounded = false;
+
+    }
+
     void DiedEvent()
     {
         Destroy(gameObject);
@@ -192,7 +201,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnSlide()
     {
-        if (Mathf.Abs(_movementInput) == 1)
+        if (Mathf.Abs(_movementInput) == 1 && !_Sliding)
         {
             _LastHorizontal = _movementInput * MoveSpeed;
             _movementEnabled = false;
