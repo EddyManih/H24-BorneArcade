@@ -24,7 +24,9 @@ public class PlayerAttack : MonoBehaviour
     private bool _canAttack = true;
     
     public delegate void KatanaTriggered();
-    public static event KatanaTriggered OnKatanaTriggered;
+    public event KatanaTriggered OnKatanaTriggered;
+    public delegate void GunTriggered();
+    public event GunTriggered OnGunTriggered;
     
     public int GetPlayerIndex()
     {
@@ -79,6 +81,7 @@ public class PlayerAttack : MonoBehaviour
         
         animator.SetTrigger("GunAttack");
         _canAttack = false;
+        OnGunTriggered?.Invoke();
     }
 
     private void LaunchAttack(int attackIndex)

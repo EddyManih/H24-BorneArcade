@@ -10,6 +10,7 @@ public class VFXManager : MonoBehaviour
     public ParticleSystem[] slidingVFX;
     public ParticleSystem[] runningVFX;
     public ParticleSystem[] katanaVFX;
+    public ParticleSystem[] gunVFX;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class VFXManager : MonoBehaviour
             vfxChannel.OnSlidingVFXRequested += PlaySlidingVFX;
             vfxChannel.OnRunningVFXRequested += PlayRunningVFX;
             vfxChannel.OnKatanaVFXRequested += PlayKatanaVFX;
+            vfxChannel.OnGunVFXRequested += PlayGunVFX;
         }
 
     }
@@ -31,6 +33,7 @@ public class VFXManager : MonoBehaviour
             vfxChannel.OnSlidingVFXRequested -= PlaySlidingVFX;
             vfxChannel.OnRunningVFXRequested -= PlayRunningVFX;
             vfxChannel.OnKatanaVFXRequested -= PlayKatanaVFX;
+            vfxChannel.OnGunVFXRequested -= PlayGunVFX;
         }
     }
 
@@ -71,6 +74,20 @@ public class VFXManager : MonoBehaviour
     private void PlayKatanaVFX(Vector3 position, bool flipped)
     {
         foreach (ParticleSystem vfx in katanaVFX)
+        {
+            ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
+            if (flipped)
+            {
+                newVfx.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            newVfx.Play();
+            Destroy(newVfx.gameObject, newVfx.main.duration);
+        }
+    }
+
+    private void PlayGunVFX(Vector3 position, bool flipped)
+    {
+        foreach (ParticleSystem vfx in gunVFX)
         {
             ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
             if (flipped)

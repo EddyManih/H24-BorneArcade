@@ -13,7 +13,8 @@ public class VFXController : MonoBehaviour
     {
         playerController = gameObject.GetComponent<PlayerController>();
         PlayerController.OnSlideTriggered += OnSlideTriggered;
-        PlayerAttack.OnKatanaTriggered += OnKatanaTriggered;
+        playerAttack.OnKatanaTriggered += OnKatanaTriggered;
+        playerAttack.OnGunTriggered += OnGunTriggered;
         StartCoroutine(RaiseSlidingEvent());
         StartCoroutine(RaiseRunningEvent());
     }
@@ -38,6 +39,22 @@ public class VFXController : MonoBehaviour
         Vector3 position = gameObject.transform.position;
         position.y = gameObject.GetComponent<Collider2D>().bounds.min.y + yOffset;
         vfxChannel.RaiseKatanaEvent(position, playerController._Flipped);
+    }
+
+    void OnGunTriggered()
+    {
+        float xOffset = 0.3f;
+        float yOffset = 0.2f;
+        Vector3 position = gameObject.transform.position;
+        position.y += yOffset;
+        if (playerController._Flipped)
+        {
+            position.x = gameObject.GetComponent<Collider2D>().bounds.min.x - xOffset;
+        } else
+        {
+            position.x = gameObject.GetComponent<Collider2D>().bounds.max.x + xOffset;
+        }
+        vfxChannel.RaiseGunEvent(position, playerController._Flipped);
     }
 
     private Vector3 GetCollisionCenter(Collision2D collision)
@@ -72,20 +89,18 @@ public class VFXController : MonoBehaviour
             Vector3 position = gameObject.transform.position;
             position.y = gameObject.GetComponent<BoxCollider2D>().bounds.min.y + yOffset;
 
-            if (!playerController._Grounded)
+            if (playerController._Grounded)
             {
-                yield return new WaitForSeconds(0.2f);
-            }
-
-            if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0)
-            {
-                position.x = gameObject.GetComponent<BoxCollider2D>().bounds.min.x;
-                vfxChannel.RaiseRunningEvent(position, false);
-            }
-            else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
-            {
-                position.x = gameObject.GetComponent<BoxCollider2D>().bounds.max.x;
-                vfxChannel.RaiseRunningEvent(position, true);
+                if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0)
+                {
+                    position.x = gameObject.GetComponent<BoxCollider2D>().bounds.min.x;
+                    vfxChannel.RaiseRunningEvent(position, false);
+                }
+                else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
+                {
+                    position.x = gameObject.GetComponent<BoxCollider2D>().bounds.max.x;
+                    vfxChannel.RaiseRunningEvent(position, true);
+                }
             }
 
             yield return new WaitForSeconds(0.2f);
