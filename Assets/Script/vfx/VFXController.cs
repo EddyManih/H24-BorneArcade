@@ -62,11 +62,17 @@ public class VFXController : MonoBehaviour
             Vector3 position = gameObject.transform.position;
             position.y = gameObject.GetComponent<BoxCollider2D>().bounds.min.y + yOffset;
 
+            if (!playerController._Grounded)
+            {
+                yield return new WaitForSeconds(0.2f);
+            }
+
             if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 0)
             {
                 position.x = gameObject.GetComponent<BoxCollider2D>().bounds.min.x;
                 vfxChannel.RaiseRunningEvent(position, true);
-            } else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
+            }
+            else if (gameObject.GetComponent<Rigidbody2D>().velocity.x < 0)
             {
                 position.x = gameObject.GetComponent<BoxCollider2D>().bounds.max.x;
                 vfxChannel.RaiseRunningEvent(position, false);

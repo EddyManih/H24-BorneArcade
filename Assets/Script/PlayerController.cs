@@ -25,12 +25,13 @@ public class PlayerController : MonoBehaviour {
     private float _movementInput;
     private bool _movementEnabled {get; set; }
     private Rigidbody2D _Rb { get; set; }
-    private bool _Grounded { get; set; }
     private bool _Flipped { get; set; }
     private bool _IsDoubleJump {get; set;}
     private bool _IsJump {get; set;}
     private bool _jumpInput;
     private bool _fallInput;
+
+    public bool _Grounded { get; private set; }
     public bool _Sliding { get; private set; }
 
   public delegate void SlideTriggered();
