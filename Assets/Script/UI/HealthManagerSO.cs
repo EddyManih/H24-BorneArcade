@@ -9,30 +9,36 @@ public class HealthManagerSO : ScriptableObject
 
     [SerializeField] private int maxHealth = 100;
 
-    [System.NonSerialized] public UnityEvent<int> healthChangeEvent;
+    [System.NonSerialized] public UnityEvent<int> damageTakenEvent;
+    [System.NonSerialized] public UnityEvent DiedEvent;
 
     private void OnEnable()
     {
         health = maxHealth;
         alive = true;
 
-        if (healthChangeEvent == null)
+        if (damageTakenEvent == null)
         {
-            healthChangeEvent = new UnityEvent<int>();
+            damageTakenEvent = new UnityEvent<int>();
+        }
+
+        if (DiedEvent == null)
+        {
+            DiedEvent = new UnityEvent();
         }
     }
 
-    public void DecreaseHealth(int amount)
+    public void DamageTaken(int amount)
     {
         if (health - amount < 0 && alive)
         {
             health = 0;
             alive = false;
-            // Player dead event triggered
+            DiedEvent.Invoke();
         } else {
             health -= amount;
         }
-        healthChangeEvent.Invoke(health);
+        damageTakenEvent.Invoke(health);
     }
 }
 
