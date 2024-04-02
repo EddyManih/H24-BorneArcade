@@ -7,7 +7,7 @@ public class SFXChannelSO : ScriptableObject
     public UnityAction OnPunchSFXRequested;
     public AudioSource clip;
 
-    public void RaisePlaySFXEvent()
+    public void RaisePunchSFXEvent()
     {
         OnPunchSFXRequested?.Invoke();
     }

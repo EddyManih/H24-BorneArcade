@@ -48,6 +48,7 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("PunchAttack");
         _canAttack = false;
         setActiveHurtbox(1);
+        gameObject.GetComponent<SFXController>().OnPunchTriggered();
     }
 
     public void KatanaAttack()
