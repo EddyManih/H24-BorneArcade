@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c2d87799b8384029ed6a36d5c895d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxChannel: {fileID: 0}
+  sfxChannel: {fileID: 11400000, guid: e7e32ccab4a87ce7f9981447b69d1310, type: 2}
   sfx: []
   volumeScale: 1
