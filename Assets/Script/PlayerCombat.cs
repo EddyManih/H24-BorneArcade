@@ -58,6 +58,7 @@ public class PlayerAttack : MonoBehaviour
         
         animator.SetTrigger("KatanaAttack");
         _canAttack = false;
+        gameObject.GetComponent<SFXController>().OnKatanaTriggered();
     }
     
     public void GunAttack()

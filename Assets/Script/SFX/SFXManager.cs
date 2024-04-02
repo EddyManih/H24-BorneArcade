@@ -5,6 +5,7 @@ public class SFXManager : MonoBehaviour
     public SFXChannelSO sfxChannel;
     public AudioClip[] punchSFX;
     public AudioClip[] punchHitSFX;
+    public AudioClip[] katanaSFX;
     public float volumeScale = 1f;
 
     private void Awake()
@@ -13,6 +14,7 @@ public class SFXManager : MonoBehaviour
         {
             sfxChannel.OnPunchSFXRequested += PlayPunchSFX;
             sfxChannel.OnPunchHitSFXRequested += PlayPunchHitSFX;
+            sfxChannel.OnKatanaSFXRequested += PlayKatanaSFX;
         }
     }
 
@@ -22,6 +24,7 @@ public class SFXManager : MonoBehaviour
         {
             sfxChannel.OnPunchSFXRequested -= PlayPunchSFX;
             sfxChannel.OnPunchHitSFXRequested -= PlayPunchHitSFX;
+            sfxChannel.OnKatanaSFXRequested -= PlayKatanaSFX;
         }
     }
 
@@ -41,6 +44,19 @@ public class SFXManager : MonoBehaviour
     private void PlayPunchHitSFX()
     {
         foreach (AudioClip clip in punchHitSFX)
+        {
+            GameObject sfxObject = new("sfxObject");
+            AudioSource audioSource = sfxObject.AddComponent<AudioSource>();
+            audioSource.clip = clip;
+            audioSource.volume = volumeScale;
+            audioSource.Play();
+            Destroy(sfxObject, clip.length);
+        }
+    }
+
+    private void PlayKatanaSFX()
+    {
+        foreach (AudioClip clip in katanaSFX)
         {
             GameObject sfxObject = new("sfxObject");
             AudioSource audioSource = sfxObject.AddComponent<AudioSource>();
