@@ -23,7 +23,8 @@ public class PlayerAttack : MonoBehaviour
 
     private bool _canAttack = true;
     
-    
+    public delegate void KatanaTriggered(Vector3 position, bool direction);
+    public static event KatanaTriggered OnKatanaTriggered;
     
     public int GetPlayerIndex()
     {
@@ -68,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
         
         animator.SetTrigger("KatanaAttack");
         _canAttack = false;
+        OnKatanaTriggered?.Invoke(transform.position, transform.localScale.x > 0);
     }
     
     public void GunAttack()

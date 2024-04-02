@@ -9,6 +9,7 @@ public class VFXManager : MonoBehaviour
     public ParticleSystem[] landingVFX;
     public ParticleSystem[] slidingVFX;
     public ParticleSystem[] runningVFX;
+    public ParticleSystem[] katanaVFX;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class VFXManager : MonoBehaviour
             vfxChannel.OnLandingVFXRequested += PlayLandingVFX;
             vfxChannel.OnSlidingVFXRequested += PlaySlidingVFX;
             vfxChannel.OnRunningVFXRequested += PlayRunningVFX;
+            vfxChannel.OnKatanaVFXRequested += PlayKatanaVFX;
         }
 
     }
@@ -28,6 +30,7 @@ public class VFXManager : MonoBehaviour
             vfxChannel.OnLandingVFXRequested -= PlayLandingVFX;
             vfxChannel.OnSlidingVFXRequested -= PlaySlidingVFX;
             vfxChannel.OnRunningVFXRequested -= PlayRunningVFX;
+            vfxChannel.OnKatanaVFXRequested -= PlayKatanaVFX;
         }
     }
 
@@ -54,6 +57,20 @@ public class VFXManager : MonoBehaviour
     private void PlayRunningVFX(Vector3 position, bool direction)
     {
         foreach (ParticleSystem vfx in runningVFX)
+        {
+            ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
+            if (!direction)
+            {
+                newVfx.transform.Rotate(0, 180, 0);
+            }
+            newVfx.Play();
+            Destroy(newVfx.gameObject, newVfx.main.duration);
+        }
+    }
+
+    private void PlayKatanaVFX(Vector3 position, bool direction)
+    {
+        foreach (ParticleSystem vfx in katanaVFX)
         {
             ParticleSystem newVfx = Instantiate(vfx, position, Quaternion.identity);
             if (!direction)

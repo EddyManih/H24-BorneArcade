@@ -5,6 +5,7 @@ public class VFXController : MonoBehaviour
 {
     public VFXChannelSO vfxChannel;
     public PlayerController playerController;
+    public PlayerAttack playerAttack;
 
     private readonly int _floorLayer = 3;
 
@@ -28,6 +29,11 @@ public class VFXController : MonoBehaviour
     void OnSlideTriggered()
     {
         vfxChannel.RaiseSlidingEvent(gameObject.transform.position);
+    }
+
+    void OnKatanaTriggered(Vector3 position, bool direction)
+    {
+        vfxChannel.RaiseKatanaEvent(position, direction);
     }
 
     private Vector3 GetCollisionCenter(Collision2D collision)
