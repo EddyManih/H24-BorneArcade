@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class SFXManager : MonoBehaviour {
   public SFXChannelSO sfxChannel;
-  public AudioClip[] sfx;
+  public AudioClip[] punchSFX;
   public float volumeScale = 1f;
 
   private void Awake() {
     if (sfxChannel != null) {
-      sfxChannel.OnPlaySFXRequested += PlaySFX;
+      sfxChannel.OnPunchSFXRequested += PlayPunchSFX;
     }
   }
 
-  private void PlaySFX() {
-    foreach (AudioClip clip in sfx) {
+  private void PlayPunchSFX() {
+    foreach (AudioClip clip in punchSFX) {
       GameObject sfxObject = new GameObject("sfxObject");
       AudioSource audioSource = sfxObject.AddComponent<AudioSource>();
       audioSource.clip = clip;
