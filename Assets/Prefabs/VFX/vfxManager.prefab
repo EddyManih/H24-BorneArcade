@@ -14740,8 +14740,6 @@ MonoBehaviour:
   vfxChannel: {fileID: 11400000, guid: c2f5c232d6b69b314af962bfb556f85b, type: 2}
   landingVFX:
   - {fileID: 1327876954623160286}
-  slidingVFX:
-  - {fileID: 0}
   runningVFX:
   - {fileID: 66088576761412447}
   katanaVFX:
