@@ -8,4 +8,9 @@ public class SFXController : MonoBehaviour
     {
         sfxChannel.RaisePunchSFXEvent();
     }
+
+    public void OnPunchHitTriggered()
+    {
+        sfxChannel.RaisePunchHitSFXEvent();
+    }
 }

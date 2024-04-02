@@ -5,10 +5,16 @@ using UnityEngine.Events;
 public class SFXChannelSO : ScriptableObject
 {
     public UnityAction OnPunchSFXRequested;
+    public UnityAction OnPunchHitSFXRequested;
     public AudioSource clip;
 
     public void RaisePunchSFXEvent()
     {
         OnPunchSFXRequested?.Invoke();
+    }
+
+    public void RaisePunchHitSFXEvent()
+    {
+        OnPunchHitSFXRequested?.Invoke();
     }
 }

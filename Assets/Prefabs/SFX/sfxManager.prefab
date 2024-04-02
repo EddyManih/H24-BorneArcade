@@ -47,4 +47,6 @@ MonoBehaviour:
   sfxChannel: {fileID: 11400000, guid: e7e32ccab4a87ce7f9981447b69d1310, type: 2}
   punchSFX:
   - {fileID: 8300000, guid: c266e86e5ec11e344bf66dede26cbc46, type: 3}
+  punchHitSFX:
+  - {fileID: 8300000, guid: 1f53a5fc6bd934e46a5d8cfa8fd27b64, type: 3}
   volumeScale: 1
