@@ -5,7 +5,6 @@ using UnityEngine.Events;
 public class VFXChannelSO : ScriptableObject
 {
     public UnityAction<Vector3> OnLandingVFXRequested;
-    public UnityAction<Vector3> OnSlidingVFXRequested;
     public delegate void RunningVFXEvent(Vector3 position, bool flipped);
     public RunningVFXEvent OnRunningVFXRequested;
     public delegate void KatanaVFXEvent(Vector3 position, bool flipped);
@@ -16,11 +15,6 @@ public class VFXChannelSO : ScriptableObject
     public void RaiseLandingEvent(Vector3 position)
     {
         OnLandingVFXRequested?.Invoke(position);
-    }
-
-    public void RaiseSlidingEvent(Vector3 position)
-    {
-        OnSlidingVFXRequested?.Invoke(position);
     }
 
     public void RaiseRunningEvent(Vector3 position, bool flipped)

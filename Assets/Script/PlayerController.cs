@@ -34,9 +34,6 @@ public class PlayerController : MonoBehaviour {
     public bool _Grounded { get; private set; }
     public bool _Sliding { get; private set; }
 
-  public delegate void SlideTriggered();
-  public static event SlideTriggered OnSlideTriggered;
-
     void Awake() {
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody2D>();

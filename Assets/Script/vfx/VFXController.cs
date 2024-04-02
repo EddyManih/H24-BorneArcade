@@ -12,10 +12,8 @@ public class VFXController : MonoBehaviour
     void Start()
     {
         playerController = gameObject.GetComponent<PlayerController>();
-        PlayerController.OnSlideTriggered += OnSlideTriggered;
         playerAttack.OnKatanaTriggered += OnKatanaTriggered;
         playerAttack.OnGunTriggered += OnGunTriggered;
-        StartCoroutine(RaiseSlidingEvent());
         StartCoroutine(RaiseRunningEvent());
     }
 
@@ -26,11 +24,6 @@ public class VFXController : MonoBehaviour
             Vector2 collisionCenter = GetCollisionCenter(collision);
             vfxChannel.RaiseLandingEvent(collisionCenter);
         }
-    }
-
-    void OnSlideTriggered()
-    {
-        vfxChannel.RaiseSlidingEvent(gameObject.transform.position);
     }
 
     void OnKatanaTriggered()
@@ -65,19 +58,6 @@ public class VFXController : MonoBehaviour
             center += contact.point;
         }
         return center / collision.contacts.Length;
-    }
-
-    private IEnumerator RaiseSlidingEvent()
-    {
-        while (true)
-        {
-            if (playerController._Sliding)
-            {
-                vfxChannel.RaiseSlidingEvent(gameObject.transform.position);
-            }
-
-            yield return new WaitForSeconds(0.2f);
-        }
     }
 
     private IEnumerator RaiseRunningEvent()
