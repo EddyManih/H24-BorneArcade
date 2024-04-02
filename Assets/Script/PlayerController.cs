@@ -81,32 +81,35 @@ public class PlayerController : MonoBehaviour
     }
 
     void Jump()
-{
-    if (_Grounded && !_IsJump)
     {
-        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
-        _Grounded = false;
-        _IsJump = true;
-        _Anim.SetTrigger("Jump");
-        _Anim.SetBool("Grounded", _Grounded);
-        _jumpInput = false; // Reset jump input
-        Debug.Log("is jumping: " + _jumpInput);
-        Debug.Log("is grounded: " + _Grounded);
+        if (_Grounded && !_IsJump)
+        {
+            _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+            _Grounded = false;
+            _IsJump = true;
+            StopSliding();
+            _Anim.SetTrigger("Jump");
+            _Anim.SetBool("Grounded", _Grounded);
+            _jumpInput = false; // Reset jump input
+            Debug.Log("is jumping: " + _jumpInput);
+            Debug.Log("is grounded: " + _Grounded);
+        }
+        else if (!_Grounded && !_IsDoubleJump && _IsJump)
+        {
+            _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+            _IsJump = false;
+            _IsDoubleJump = true;
+            _Anim.SetTrigger("DoubleJump");
+            _jumpInput = false; // Reset jump input
+        }
     }
-    else if (!_Grounded && !_IsDoubleJump && _IsJump)
+    void Fall()
     {
-        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
-        _IsJump = false;
-        _IsDoubleJump = true;
-        _Anim.SetTrigger("DoubleJump");
-        _jumpInput = false; // Reset jump input
+        if(!_Grounded){
+            _Rb.velocity = new Vector2(_Rb.velocity.x, -JumpForce);
+        }
     }
-}
-void Fall(){
-    if(!_Grounded){
-        _Rb.velocity = new Vector2(_Rb.velocity.x, -JumpForce);
-    }
-}
+
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
@@ -122,11 +125,16 @@ void Fall(){
 
             if (_Timer > 0.5f)
             {
-                _movementEnabled = true;
-                _Sliding = false;
-                _Anim.SetBool("Sliding", _Sliding);
+                StopSliding();
             }
         }
+    }
+
+    void StopSliding()
+    {
+        _movementEnabled = true;
+        _Sliding = false;
+        _Anim.SetBool("Sliding", _Sliding);
     }
 
     void FlipCharacter(float horizontal)
