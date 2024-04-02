@@ -18,15 +18,12 @@ public class PlayerAttack : MonoBehaviour
     public int punchDamage;
     public int katanaDamage;
 
-    [SerializeField]
-    public UnityEvent onPunchHit, onKatanaHit;
-
     private bool _canAttack = true;
     
     public delegate void KatanaTriggered();
-    public event KatanaTriggered OnKatanaTriggered;
+    // public event KatanaTriggered OnKatanaTriggered;
     public delegate void GunTriggered();
-    public event GunTriggered OnGunTriggered;
+    // public event GunTriggered OnGunTriggered;
     
     public int GetPlayerIndex()
     {
@@ -36,17 +33,6 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            PunchAttack();
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            KatanaAttack();
-        }
-        */
     }
 
     private void Awake()
@@ -71,7 +57,6 @@ public class PlayerAttack : MonoBehaviour
         
         animator.SetTrigger("KatanaAttack");
         _canAttack = false;
-        OnKatanaTriggered?.Invoke();
     }
     
     public void GunAttack()
@@ -81,7 +66,6 @@ public class PlayerAttack : MonoBehaviour
         
         animator.SetTrigger("GunAttack");
         _canAttack = false;
-        OnGunTriggered?.Invoke();
     }
 
     private void LaunchAttack(int attackIndex)
@@ -95,19 +79,18 @@ public class PlayerAttack : MonoBehaviour
             if (c.transform.parent.parent == transform)
                 continue;
 
-            float damage = 0;
-            switch (c.name)
+            float damage = col.name switch
             {
-                case "PunchHitbox":
-                    damage = punchDamage;
-                    break;
-                case "KatanaHitbox":
-                    damage = katanaDamage;
-                    break;
-            }
+                "PunchHitbox" => punchDamage,
+                "KatanaHitbox" => katanaDamage,
+                _ => 0
+            };
 
             // Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
-            c.transform.parent.parent.GetComponent<PlayerAttack>().onKatanaHit?.Invoke();
+            c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int) damage);
+            if (col.name == "KatanaHitbox") c.transform.parent.parent.GetComponent<VFXController>().OnKatanaTriggered();
+            // To implement with gun bullets
+            // if (col.name == "GunHitbox") c.transform.parent.parent.GetComponent<VFXController>().OnGunTriggered();
         }
     }
 

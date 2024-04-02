@@ -651,6 +651,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2096072724}
     - target: {fileID: 1538881625527342269, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: katanaDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538881625527342269, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: onPunchHit.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -1027,7 +1031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1538881625527342269, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: punchDamage
-      value: 0
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538881625527342269, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: katanaDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4134018015679146750, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: m_text

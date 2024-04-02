@@ -12,8 +12,6 @@ public class VFXController : MonoBehaviour
     void Start()
     {
         playerController = gameObject.GetComponent<PlayerController>();
-        playerAttack.OnKatanaTriggered += OnKatanaTriggered;
-        playerAttack.OnGunTriggered += OnGunTriggered;
         StartCoroutine(RaiseRunningEvent());
     }
 
@@ -26,7 +24,7 @@ public class VFXController : MonoBehaviour
         }
     }
 
-    void OnKatanaTriggered()
+    public void OnKatanaTriggered()
     {
         float yOffset = 0.1f;
         Vector3 position = gameObject.transform.position;
@@ -34,7 +32,7 @@ public class VFXController : MonoBehaviour
         vfxChannel.RaiseKatanaEvent(position, playerController._Flipped);
     }
 
-    void OnGunTriggered()
+    public void OnGunTriggered()
     {
         float xOffset = 0.3f;
         float yOffset = 0.2f;

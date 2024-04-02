@@ -44,8 +44,6 @@ public class PlayerController : MonoBehaviour {
         flipEvent.AddListener(playerIndicator.FlipIndicator);
         healthManagerSO = Instantiate<HealthManagerSO>(healthManagerPrefab);
         healthManagerSO.DiedEvent.AddListener(DiedEvent);
-        playerAttack.onPunchHit.AddListener(OnPunchHit);
-        playerAttack.onKatanaHit.AddListener(OnKatanaHit);
     }
 
     void Start()
@@ -61,7 +59,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_Grounded);
+        // Debug.Log(_Grounded);
         var horizontal = _movementEnabled ? _movementInput * MoveSpeed : 0;
         if( _jumpInput){
             _jumpInput = false;
