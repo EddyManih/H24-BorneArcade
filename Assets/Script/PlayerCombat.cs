@@ -21,7 +21,10 @@ public class PlayerAttack : MonoBehaviour
 
     private bool _canAttack = true;
     
-    
+    public delegate void KatanaTriggered();
+    // public event KatanaTriggered OnKatanaTriggered;
+    public delegate void GunTriggered();
+    // public event GunTriggered OnGunTriggered;
     
     
     public int GetPlayerIndex()
@@ -89,6 +92,9 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
             c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int) damage, gameObject);
             c.transform.parent.parent.GetComponent<KnockBackFeedback>().PlayFeedback(gameObject, attackIndex);
+            if (col.name == "KatanaHitbox") c.transform.parent.parent.GetComponent<VFXController>().OnKatanaTriggered();
+            // To implement with gun bullets
+            // if (col.name == "GunHitbox") c.transform.parent.parent.GetComponent<VFXController>().OnGunTriggered();
         }
     }
 

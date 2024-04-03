@@ -588,6 +588,7 @@ GameObject:
   - component: {fileID: 2387946581149393042}
   - component: {fileID: 1538881625527342269}
   - component: {fileID: 5240584559030457400}
+  - component: {fileID: 1058513455102940144}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -706,6 +707,7 @@ MonoBehaviour:
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  playerAttack: {fileID: 1538881625527342269}
   healthManagerPrefab: {fileID: 11400000, guid: 5e46895bd173fde48a80c2e6e32cbc78, type: 2}
 --- !u!50 &8742607318002024622
 Rigidbody2D:
@@ -836,6 +838,21 @@ MonoBehaviour:
       m_Calls: []
   animator: {fileID: 2533068968850662050}
   playerController: {fileID: 434286439225731815}
+--- !u!114 &1058513455102940144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807346407231833850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b544d4de17f6894fbbb7b25bf196832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxChannel: {fileID: 11400000, guid: c2f5c232d6b69b314af962bfb556f85b, type: 2}
+  playerController: {fileID: 434286439225731815}
+  playerAttack: {fileID: 1538881625527342269}
 --- !u!1 &6574329916424964841
 GameObject:
   m_ObjectHideFlags: 0
