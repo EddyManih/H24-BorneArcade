@@ -15,8 +15,9 @@ public class PlayerAttack : MonoBehaviour
 
     public Transform firePoint;
 
-    public int punchDamage;
-    public int katanaDamage;
+    public float punchDamage;
+    public float katanaDamage;
+    public float gunDamage;
 
     private bool _canAttack = true;
     
@@ -24,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
     // public event KatanaTriggered OnKatanaTriggered;
     public delegate void GunTriggered();
     // public event GunTriggered OnGunTriggered;
+    
     
     public int GetPlayerIndex()
     {
@@ -33,6 +35,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 
     private void Awake()
@@ -91,6 +94,7 @@ public class PlayerAttack : MonoBehaviour
 
             // Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
             c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int)damage);
+            c.transform.parent.parent.GetComponent<KnockBackFeedback>().PlayFeedback(gameObject, attackIndex);
             if (col.name == "PunchHitbox") c.transform.parent.parent.GetComponent<SFXController>().OnPunchHitTriggered();
             if (col.name == "KatanaHitbox")
             {
@@ -110,6 +114,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _canAttack = true;
         setActiveHurtbox(0);
+        GetComponentInParent(typeof(PlayerController)).GetComponent<PlayerController>().EnableMovement();
     }
 
     private void setActiveHurtbox(int hurtboxIndex)

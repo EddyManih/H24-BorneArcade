@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour {
     private bool _IsJump {get; set;}
     private bool _jumpInput;
     private bool _fallInput;
+    private bool _isInKnockback = false;
 
     public bool _Flipped { get; private set; }
     public bool _Grounded { get; private set; }
@@ -61,15 +62,23 @@ public class PlayerController : MonoBehaviour {
     {
         // Debug.Log(_Grounded);
         var horizontal = _movementEnabled ? _movementInput * MoveSpeed : 0;
-        if( _jumpInput){
+        if (_jumpInput)
+        {
             _jumpInput = false;
             Jump();
         }
-        if(_fallInput){
+
+        if (_fallInput)
+        {
             Fall();
         }
-        HorizontalMove(horizontal);
-        FlipCharacter(horizontal);
+
+        if (!_isInKnockback)
+        {
+            HorizontalMove(horizontal);
+            FlipCharacter(horizontal);
+        }
+
         _Timer += Time.deltaTime;
     }
 
@@ -159,7 +168,7 @@ public class PlayerController : MonoBehaviour {
         // Évite une collision avec le plafond
         if (coll.relativeVelocity.y > 0)
         {
-             _IsDoubleJump = false;
+            _IsDoubleJump = false;
             _IsJump = false;
             _Grounded = true;
             _Anim.SetBool("Grounded", _Grounded);
@@ -178,7 +187,9 @@ public class PlayerController : MonoBehaviour {
 
     void DiedEvent()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        _Anim.SetBool("Alive", false);
+        _Anim.SetTrigger("Died");
     }
 
     public void OnMovementInput(float movementInput)
@@ -186,12 +197,12 @@ public class PlayerController : MonoBehaviour {
         _movementInput = movementInput;
     }
 
-     public void OnJumpInput(bool jumpInput)
+    public void OnJumpInput(bool jumpInput)
     {
         _jumpInput = jumpInput;
     }
 
-     public void OnFallInput(bool fallInput)
+    public void OnFallInput(bool fallInput)
     {
         _fallInput = fallInput;
     }
@@ -207,19 +218,25 @@ public class PlayerController : MonoBehaviour {
             _Anim.SetBool("Sliding", _Sliding);
         }
     }
-
-    void OnKatanaHit()
-    {
-        healthManagerSO.DamageTaken(playerAttack.katanaDamage);
-    }
-
-    void OnPunchHit()
-    {
-        healthManagerSO.DamageTaken(playerAttack.punchDamage);
-    }
+    
 
     public void DisableMovement()
     {
         _movementEnabled = false;
+    }
+
+    public void EnableMovement()
+    {
+        _movementEnabled = true;
+    }
+    
+    public void EnableKnockbackState()
+    {
+        _isInKnockback = true;
+    }
+    
+    public void DisableKnockbackState()
+    {
+        _isInKnockback = false;
     }
 }

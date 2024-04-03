@@ -11,6 +11,7 @@ public class HealthManagerSO : ScriptableObject
 
     [System.NonSerialized] public UnityEvent<int> damageTakenEvent;
     [System.NonSerialized] public UnityEvent DiedEvent;
+    
 
     private void OnEnable()
     {
@@ -28,9 +29,9 @@ public class HealthManagerSO : ScriptableObject
         }
     }
 
-    public void DamageTaken(int amount)
+    public void DamageTaken(int amount, GameObject attacker = null)
     {
-        if (health - amount < 0 && alive)
+        if (health - amount <= 0 && alive)
         {
             health = 0;
             alive = false;
