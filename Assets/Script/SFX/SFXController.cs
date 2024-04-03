@@ -27,6 +27,16 @@ public class SFXController : MonoBehaviour
         sfxChannel.OnKatanaHitSFXRequested();
     }
 
+    public void OnGunTriggered()
+    {
+        sfxChannel.RaiseGunSFXEvent();
+    }
+
+    public void OnGunHitTriggered()
+    {
+        sfxChannel.RaiseGunHitSFXEvent();
+    }
+
     private IEnumerator PlayWithDelay(Action action, float delay)
     {
         yield return new WaitForSeconds(delay);

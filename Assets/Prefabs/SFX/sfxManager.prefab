@@ -53,4 +53,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5e76710f9fa8a5b42bc302ad7294e7ef, type: 3}
   katanaHitSFX:
   - {fileID: 8300000, guid: 7cbd6cd765888ff418d01d98bd1ce9c2, type: 3}
+  gunSFX:
+  - {fileID: 8300000, guid: 6257ac5801ab726498a022af9bed3332, type: 3}
+  gunHitSFX:
+  - {fileID: 8300000, guid: 3aeee119962c04945b9158f141d32ac5, type: 3}
   volumeScale: 1

@@ -68,6 +68,7 @@ public class PlayerAttack : MonoBehaviour
         
         animator.SetTrigger("GunAttack");
         _canAttack = false;
+        gameObject.GetComponent<SFXController>().OnGunTriggered();
     }
 
     private void LaunchAttack(int attackIndex)
@@ -89,7 +90,7 @@ public class PlayerAttack : MonoBehaviour
             };
 
             // Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
-            c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int) damage);
+            c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int)damage);
             if (col.name == "PunchHitbox") c.transform.parent.parent.GetComponent<SFXController>().OnPunchHitTriggered();
             if (col.name == "KatanaHitbox")
             {
@@ -97,7 +98,11 @@ public class PlayerAttack : MonoBehaviour
                 c.transform.parent.parent.GetComponent<SFXController>().OnKatanaHitTriggered();
             }
             // To implement with gun bullets
-            // if (col.name == "GunHitbox") c.transform.parent.parent.GetComponent<VFXController>().OnGunTriggered();
+            // if (col.name == "GunHitbox")
+            // {
+            //     c.transform.parent.parent.GetComponent<VFXController>().OnGunTriggered();
+            //     c.transform.parent.parent.GetComponent<SFXController>().OnGunHitTriggered();
+            // }
         }
     }
 
