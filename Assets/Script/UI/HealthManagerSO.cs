@@ -12,7 +12,6 @@ public class HealthManagerSO : ScriptableObject
     [System.NonSerialized] public UnityEvent<int> damageTakenEvent;
     [System.NonSerialized] public UnityEvent DiedEvent;
     
-    public UnityEvent<GameObject> OnHitWithReference;
 
     private void OnEnable()
     {
@@ -41,10 +40,6 @@ public class HealthManagerSO : ScriptableObject
             health -= amount;
         }
         damageTakenEvent.Invoke(health);
-        if (attacker != null)
-        {
-            OnHitWithReference.Invoke(attacker);
-        }
     }
 }
 

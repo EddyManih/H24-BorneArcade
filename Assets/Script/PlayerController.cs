@@ -25,16 +25,19 @@ public class PlayerController : MonoBehaviour
     private float _movementInput;
 
     private bool _Sliding;
-    private bool _movementEnabled {get; set; }
+    private bool _movementEnabled { get; set; }
     private Rigidbody2D _Rb { get; set; }
     private bool _Grounded { get; set; }
     private bool _Flipped { get; set; }
-    private bool _IsDoubleJump {get; set;}
-    private bool _IsJump {get; set;}
+    private bool _IsDoubleJump { get; set; }
+    private bool _IsJump { get; set; }
     private bool _jumpInput;
     private bool _fallInput;
+    private bool _isInKnockback = false;
 
-    void Awake() {
+
+    void Awake()
+    {
         _Anim = GetComponent<Animator>();
         _Rb = GetComponent<Rigidbody2D>();
         _Sliding = false;
@@ -60,15 +63,23 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         var horizontal = _movementEnabled ? _movementInput * MoveSpeed : 0;
-        if( _jumpInput){
+        if (_jumpInput)
+        {
             _jumpInput = false;
             Jump();
         }
-        if(_fallInput){
+
+        if (_fallInput)
+        {
             Fall();
         }
-        HorizontalMove(horizontal);
-        FlipCharacter(horizontal);
+
+        if (!_isInKnockback)
+        {
+            HorizontalMove(horizontal);
+            FlipCharacter(horizontal);
+        }
+
         _Timer += Time.deltaTime;
     }
 
@@ -78,32 +89,36 @@ public class PlayerController : MonoBehaviour
     }
 
     void Jump()
-{
-    if (_Grounded && !_IsJump)
     {
-        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
-        _Grounded = false;
-        _IsJump = true;
-        _Anim.SetTrigger("Jump");
-        _Anim.SetBool("Grounded", _Grounded);
-        _jumpInput = false; // Reset jump input
-        Debug.Log("is jumping: " + _jumpInput);
-        Debug.Log("is grounded: " + _Grounded);
+        if (_Grounded && !_IsJump)
+        {
+            _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+            _Grounded = false;
+            _IsJump = true;
+            _Anim.SetTrigger("Jump");
+            _Anim.SetBool("Grounded", _Grounded);
+            _jumpInput = false; // Reset jump input
+            Debug.Log("is jumping: " + _jumpInput);
+            Debug.Log("is grounded: " + _Grounded);
+        }
+        else if (!_Grounded && !_IsDoubleJump && _IsJump)
+        {
+            _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
+            _IsJump = false;
+            _IsDoubleJump = true;
+            _Anim.SetTrigger("DoubleJump");
+            _jumpInput = false; // Reset jump input
+        }
     }
-    else if (!_Grounded && !_IsDoubleJump && _IsJump)
+
+    void Fall()
     {
-        _Rb.velocity = new Vector2(_Rb.velocity.x, JumpForce);
-        _IsJump = false;
-        _IsDoubleJump = true;
-        _Anim.SetTrigger("DoubleJump");
-        _jumpInput = false; // Reset jump input
+        if (!_Grounded)
+        {
+            _Rb.velocity = new Vector2(_Rb.velocity.x, -JumpForce);
+        }
     }
-}
-void Fall(){
-    if(!_Grounded){
-        _Rb.velocity = new Vector2(_Rb.velocity.x, -JumpForce);
-    }
-}
+
     // Gère le mouvement horizontal
     void HorizontalMove(float horizontal)
     {
@@ -152,7 +167,7 @@ void Fall(){
         // Évite une collision avec le plafond
         if (coll.relativeVelocity.y > 0)
         {
-             _IsDoubleJump = false;
+            _IsDoubleJump = false;
             _IsJump = false;
             _Grounded = true;
             _Anim.SetBool("Grounded", _Grounded);
@@ -170,12 +185,12 @@ void Fall(){
         _movementInput = movementInput;
     }
 
-     public void OnJumpInput(bool jumpInput)
+    public void OnJumpInput(bool jumpInput)
     {
         _jumpInput = jumpInput;
     }
 
-     public void OnFallInput(bool fallInput)
+    public void OnFallInput(bool fallInput)
     {
         _fallInput = fallInput;
     }
@@ -195,5 +210,20 @@ void Fall(){
     public void DisableMovement()
     {
         _movementEnabled = false;
+    }
+
+    public void EnableMovement()
+    {
+        _movementEnabled = true;
+    }
+    
+    public void EnableKnockbackState()
+    {
+        _isInKnockback = true;
+    }
+    
+    public void DisableKnockbackState()
+    {
+        _isInKnockback = false;
     }
 }

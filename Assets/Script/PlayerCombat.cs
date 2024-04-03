@@ -17,8 +17,10 @@ public class PlayerAttack : MonoBehaviour
 
     public float punchDamage;
     public float katanaDamage;
+    public float gunDamage;
 
     private bool _canAttack = true;
+    
     
     
     
@@ -86,6 +88,7 @@ public class PlayerAttack : MonoBehaviour
 
             Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
             c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int) damage, gameObject);
+            c.transform.parent.parent.GetComponent<KnockBackFeedback>().PlayFeedback(gameObject, attackIndex);
         }
     }
 
@@ -93,6 +96,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _canAttack = true;
         setActiveHurtbox(0);
+        GetComponentInParent(typeof(PlayerController)).GetComponent<PlayerController>().EnableMovement();
     }
 
     private void setActiveHurtbox(int hurtboxIndex)

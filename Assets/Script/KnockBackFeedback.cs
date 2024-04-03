@@ -3,22 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class NewBehaviourScript : MonoBehaviour
+public class KnockBackFeedback : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb2d;
     
     [SerializeField]
-    private float strength = 16, delay = 0.15f;
+    private float[] strength;
+    private float delay = 0.15f;
+    public float directionX, directionY;
 
     public UnityEvent OnBegin, OnDone;
     
-    public void PlayFeedback(GameObject sender)
+    public Animator animator;
+    public PlayerController playerController;
+
+    public void PlayFeedback(GameObject sender, int attackIndex)
     {
-       StopAllCoroutines();
-       OnBegin?.Invoke();
-       Vector2 direction = (transform.position - sender.transform.position).normalized;
-       rb2d.AddForce(direction*strength, ForceMode2D.Impulse);
-       StartCoroutine(Reset());
+
+        animator.SetTrigger("Hurt");
+        playerController.EnableKnockbackState();
+        Debug.Log("PlayFeedback called on " + gameObject.name + " by " + sender.name + "!");
+        
+        StopAllCoroutines();
+        OnBegin?.Invoke();
+        
+        Vector2 direction = (transform.position - sender.transform.position).normalized;
+        direction.y += 0.2f;
+
+        rb2d.AddForce(direction*strength[attackIndex], ForceMode2D.Impulse);
+        StartCoroutine(Reset());
     }
     
     private IEnumerator Reset()
@@ -27,4 +40,5 @@ public class NewBehaviourScript : MonoBehaviour
         rb2d.velocity = Vector3.zero;
         OnDone?.Invoke();
     }
+
 }
