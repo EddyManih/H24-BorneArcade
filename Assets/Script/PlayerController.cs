@@ -188,6 +188,7 @@ public class PlayerController : MonoBehaviour {
     void DiedEvent()
     {
         //Destroy(gameObject);
+        _Anim.SetBool("Alive", false);
         _Anim.SetTrigger("Died");
     }
 
