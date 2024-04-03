@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &152222433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 434286439225731815, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+  m_PrefabInstance: {fileID: 1631574537}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cdcce2d969165249be8592992818c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &500806108
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +623,17 @@ Transform:
   - {fileID: 554684851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1036475433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 434286439225731815, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+  m_PrefabInstance: {fileID: 1406735325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cdcce2d969165249be8592992818c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1406735325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -861,7 +883,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   fill: {fileID: 1953314629}
-  playerController: {fileID: 0}
+  playerController: {fileID: 152222433}
 --- !u!114 &1472345809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,7 +928,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   fill: {fileID: 549204107}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1036475433}
 --- !u!1 &1535980700
 GameObject:
   m_ObjectHideFlags: 0
