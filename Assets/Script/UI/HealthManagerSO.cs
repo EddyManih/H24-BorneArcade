@@ -29,7 +29,7 @@ public class HealthManagerSO : ScriptableObject
         }
     }
 
-    public void DamageTaken(int amount, GameObject attacker = null)
+    public void DamageTaken(int amount)
     {
         if (health - amount <= 0 && alive)
         {
