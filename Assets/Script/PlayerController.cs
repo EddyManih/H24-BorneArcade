@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
         _movementEnabled = true;
         _movementInput = 0.0f;
         _Grounded = false;
-        _Flipped = false;
+        _Flipped = gameObject.transform.localScale.x < 0;
         _IsDoubleJump = false;
         _IsJump = false;
     }
