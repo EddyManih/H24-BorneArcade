@@ -51,6 +51,7 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("PunchAttack");
         _canAttack = false;
         setActiveHurtbox(1);
+        gameObject.GetComponent<SFXController>().OnPunchTriggered();
     }
 
     public void KatanaAttack()
@@ -60,6 +61,7 @@ public class PlayerAttack : MonoBehaviour
         
         animator.SetTrigger("KatanaAttack");
         _canAttack = false;
+        gameObject.GetComponent<SFXController>().OnKatanaTriggered();
     }
     
     public void GunAttack()
@@ -69,6 +71,7 @@ public class PlayerAttack : MonoBehaviour
         
         animator.SetTrigger("GunAttack");
         _canAttack = false;
+        gameObject.GetComponent<SFXController>().OnGunTriggered();
     }
 
     private void LaunchAttack(int attackIndex)
@@ -89,14 +92,21 @@ public class PlayerAttack : MonoBehaviour
                 _ => 0
             };
 
-            Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
-            c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int) damage, gameObject);
+            // Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
+            c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int)damage);
             c.transform.parent.parent.GetComponent<KnockBackFeedback>().PlayFeedback(gameObject, attackIndex);
-            
-            
-            if (col.name == "KatanaHitbox") c.transform.parent.parent.GetComponent<VFXController>().OnKatanaTriggered();
+            if (col.name == "PunchHitbox") c.transform.parent.parent.GetComponent<SFXController>().OnPunchHitTriggered();
+            if (col.name == "KatanaHitbox")
+            {
+                c.transform.parent.parent.GetComponent<VFXController>().OnKatanaTriggered();
+                c.transform.parent.parent.GetComponent<SFXController>().OnKatanaHitTriggered();
+            }
             // To implement with gun bullets
-            // if (col.name == "GunHitbox") c.transform.parent.parent.GetComponent<VFXController>().OnGunTriggered();
+            // if (col.name == "GunHitbox")
+            // {
+            //     c.transform.parent.parent.GetComponent<VFXController>().OnGunTriggered();
+            //     c.transform.parent.parent.GetComponent<SFXController>().OnGunHitTriggered();
+            // }
         }
     }
 
