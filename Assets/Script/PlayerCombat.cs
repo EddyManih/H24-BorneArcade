@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour
     public Animator animator;
     public Collider2D[] attackHitboxes;
     public Collider2D[] hurtboxes;
+    
+    public GameObject bulletPrefab;
 
     public Transform firePoint;
 
@@ -45,6 +47,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void PunchAttack()
     {
+        var playerController = GetComponentInParent<PlayerController>();
+        if (!playerController._Grounded)
+        {
+            return;
+        }
+        
         if (!_canAttack)
             return;
         
@@ -55,6 +63,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void KatanaAttack()
     {
+        var playerController = GetComponentInParent<PlayerController>();
+        if (!playerController._Grounded)
+        {
+            return;
+        }
+        
         if (!_canAttack)
             return;
         
@@ -64,6 +78,12 @@ public class PlayerAttack : MonoBehaviour
     
     public void GunAttack()
     {
+        var playerController = GetComponentInParent<PlayerController>();
+        if (!playerController._Grounded)
+        {
+            return;
+        }
+        
         if (!_canAttack)
             return;
         
@@ -90,7 +110,7 @@ public class PlayerAttack : MonoBehaviour
             };
 
             Debug.Log(col.name + " hit " + c.name + " of " + c.transform.parent.parent.name);
-            c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int) damage, gameObject);
+            c.transform.parent.parent.GetComponent<PlayerController>().healthManagerSO.DamageTaken((int) damage); 
             c.transform.parent.parent.GetComponent<KnockBackFeedback>().PlayFeedback(gameObject, attackIndex);
             
             
@@ -99,12 +119,18 @@ public class PlayerAttack : MonoBehaviour
             // if (col.name == "GunHitbox") c.transform.parent.parent.GetComponent<VFXController>().OnGunTriggered();
         }
     }
-
+    
+    private void FireBullet()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Bullet>().damage = gunDamage;
+    }
+    
     private void EndAttack()
     {
         _canAttack = true;
         setActiveHurtbox(0);
-        GetComponentInParent(typeof(PlayerController)).GetComponent<PlayerController>().EnableMovement();
+        //GetComponentInParent(typeof(PlayerController)).GetComponent<PlayerController>().EnableMovement();
     }
 
     private void setActiveHurtbox(int hurtboxIndex)
@@ -116,6 +142,4 @@ public class PlayerAttack : MonoBehaviour
 
         hurtboxes[hurtboxIndex].enabled = true;
     }
-    
-    
 }
