@@ -7,6 +7,7 @@ public class SFXChannelSO : ScriptableObject
     public UnityAction OnPunchSFXRequested;
     public UnityAction OnPunchHitSFXRequested;
     public UnityAction OnKatanaSFXRequested;
+    public UnityAction OnKatanaHitSFXRequested;
     public AudioSource clip;
 
     public void RaisePunchSFXEvent()
@@ -22,5 +23,10 @@ public class SFXChannelSO : ScriptableObject
     public void RaiseKatanaSFXEvent()
     {
         OnKatanaSFXRequested?.Invoke();
+    }
+
+    public void RaiseKatanaHitSFXEvent()
+    {
+        OnKatanaHitSFXRequested?.Invoke();
     }
 }

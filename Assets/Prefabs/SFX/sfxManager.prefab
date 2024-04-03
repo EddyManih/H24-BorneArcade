@@ -51,4 +51,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1f53a5fc6bd934e46a5d8cfa8fd27b64, type: 3}
   katanaSFX:
   - {fileID: 8300000, guid: 5e76710f9fa8a5b42bc302ad7294e7ef, type: 3}
+  katanaHitSFX:
+  - {fileID: 8300000, guid: 7cbd6cd765888ff418d01d98bd1ce9c2, type: 3}
   volumeScale: 1

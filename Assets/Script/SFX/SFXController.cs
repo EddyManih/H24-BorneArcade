@@ -22,6 +22,11 @@ public class SFXController : MonoBehaviour
         StartCoroutine(PlayWithDelay(sfxChannel.RaiseKatanaSFXEvent, 0.5f));
     }
     
+    public void OnKatanaHitTriggered()
+    {
+        sfxChannel.OnKatanaHitSFXRequested();
+    }
+
     private IEnumerator PlayWithDelay(Action action, float delay)
     {
         yield return new WaitForSeconds(delay);
