@@ -805,13 +805,11 @@ MonoBehaviour:
   - {fileID: 1608286390228672382}
   - {fileID: 1608286390228672382}
   - {fileID: 2845627387122861692}
+  bulletPrefab: {fileID: 5779903581444104069, guid: 9fee1e9b1eb9c9f4ea9c9c199b52ace9, type: 3}
   firePoint: {fileID: 501222963646749481}
   punchDamage: 10
-  katanaDamage: 40
-  gunDamage: 0
-  OnHitWithReference:
-    m_PersistentCalls:
-      m_Calls: []
+  katanaDamage: 20
+  gunDamage: 4
 --- !u!114 &5240584559030457400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,7 +1020,7 @@ Transform:
   m_GameObject: {fileID: 7368383890526183815}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.115, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2795, y: 0.0609, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
