@@ -824,8 +824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 8742607318002024622}
   strength:
+  - 10
   - 20
-  - 42
   - 4
   directionX: 0
   directionY: 0
