@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2753135032626559597}
   m_Layer: 0
   m_Name: PlayerInput
-  m_TagString: Untagged
+  m_TagString: Input
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,6 +170,50 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d5efdc90-4928-4dee-bb99-0466a94d726d
     m_ActionName: Player1Bindings/Gun[/Keyboard/i,/DualShock4GamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dae55e64-3301-4093-b84c-c63921c669a0
+    m_ActionName: Player1Bindings/InputTest
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 154e93aa-227e-4bb3-903d-217324332f04
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2112d1a1-5b22-4c70-b853-cc977bb589c8
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a841e265-9b08-459e-9c09-6f502e53aa46
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 17dbb40f-39e1-4913-9e42-060dcbb5617c
+    m_ActionName: UI/Point
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 10931270-85df-45fd-9ecd-28e15455268c
+    m_ActionName: UI/Click
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 378ed1f1-f27d-4111-89e2-44803c390a2f
+    m_ActionName: UI/ScrollWheel
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b95f5321-19f4-4b3d-9995-9ad68d11be5f
+    m_ActionName: UI/MiddleClick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c704b647-644c-4421-946c-ce25acfbca61
+    m_ActionName: UI/RightClick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 76ede605-7975-4dd9-8bab-06dead27db30
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 21cf49be-791c-4731-8dbe-ac4419335c5d
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player1Bindings

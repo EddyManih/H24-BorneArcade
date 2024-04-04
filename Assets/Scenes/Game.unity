@@ -697,6 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c4ea1fdaac8f4469ace301310a7ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endMenu: {fileID: 0}
+  replayButton: {fileID: 0}
 --- !u!1 &596067372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,7 +1757,7 @@ GameObject:
   - component: {fileID: 1535980702}
   m_Layer: 0
   m_Name: InputManager
-  m_TagString: Untagged
+  m_TagString: Input
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
