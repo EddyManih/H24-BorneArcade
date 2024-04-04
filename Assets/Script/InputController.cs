@@ -29,25 +29,25 @@ public class InputController : MonoBehaviour
         playerController = playerControllers.FirstOrDefault(player => {
             // Pour la borne
             // ----------------------------------------
-            // if (playerInput.devices[0].ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  ")) return player.GetPlayerIndex() == 0;
-            // else return player.GetPlayerIndex() == 1;
+            if (playerInput.devices[0].ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  ")) return player.GetPlayerIndex() == 0;
+            else return player.GetPlayerIndex() == 1;
             // ----------------------------------------
 
             // Pour tester avec le clavier ou des manettes
             // ----------------------------------------
-            return player.GetPlayerIndex() == index;
+            // return player.GetPlayerIndex() == index;
             // ----------------------------------------
         });
         attackController = attackControllers.FirstOrDefault(player => {
             // Pour la borne
             // ----------------------------------------
-            // if (playerInput.devices[0].ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  ")) return player.GetPlayerIndex() == 0;
-            // else return player.GetPlayerIndex() == 1;
+            if (playerInput.devices[0].ToString().Equals("HID::DragonRise Inc.   Generic   USB  Joystick  :/DragonRise Inc.   Generic   USB  Joystick  ")) return player.GetPlayerIndex() == 0;
+            else return player.GetPlayerIndex() == 1;
             // ----------------------------------------
 
             // Pour tester avec le clavier ou des manettes
             // ----------------------------------------
-            return player.GetPlayerIndex() == index;
+            // return player.GetPlayerIndex() == index;
             // ----------------------------------------
         });
     }
