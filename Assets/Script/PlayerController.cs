@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void StopSliding()
+    public void StopSliding()
     {
         _movementEnabled = true;
         _Sliding = false;
