@@ -697,8 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c4ea1fdaac8f4469ace301310a7ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endMenu: {fileID: 0}
-  replayButton: {fileID: 0}
+  waitForMenuTime: 2
 --- !u!1 &596067372
 GameObject:
   m_ObjectHideFlags: 0
