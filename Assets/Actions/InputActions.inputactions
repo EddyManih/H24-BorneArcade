@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "InputTest",
+                    "type": "Button",
+                    "id": "dae55e64-3301-4093-b84c-c63921c669a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -326,7 +335,7 @@
                 {
                     "name": "binding",
                     "id": "baa2373f-0c2a-4a1c-9745-f3a4e1ca7dbf",
-                    "path": "<Keyboard>/leftCtrl",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -359,11 +368,22 @@
                 {
                     "name": "",
                     "id": "4e721e3a-1b9f-4596-84be-2a74edfa1e30",
-                    "path": "",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button7",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Gun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aac69921-6612-420f-b5d4-85ebf5641515",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InputTest",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

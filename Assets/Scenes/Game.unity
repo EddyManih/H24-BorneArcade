@@ -1319,6 +1319,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1538881625527342269, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
+      propertyPath: playerIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538881625527342269, guid: d8b9cc7c787b1aa4fbe359b0843cc505, type: 3}
       propertyPath: katanaDamage
       value: 20
       objectReference: {fileID: 0}
