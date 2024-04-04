@@ -46,15 +46,16 @@ public class PlayerAttack : MonoBehaviour
     }
 
     public void PunchAttack()
-    {
-        var playerController = GetComponentInParent<PlayerController>();
-        if (!playerController._Grounded)
-        {
-            return;
-        }
-        
+    {        
         if (!_canAttack)
             return;
+
+        var playerController = GetComponentInParent<PlayerController>();
+        
+        if (playerController._Sliding)
+        {
+            playerController.StopSliding();
+        }
         
         animator.SetTrigger("PunchAttack");
         _canAttack = false;
@@ -63,16 +64,17 @@ public class PlayerAttack : MonoBehaviour
     }
 
     public void KatanaAttack()
-    {
-        var playerController = GetComponentInParent<PlayerController>();
-        if (!playerController._Grounded)
-        {
-            return;
-        }
-        
+    {        
         if (!_canAttack)
             return;
-        
+
+        var playerController = GetComponentInParent<PlayerController>();
+
+        if (playerController._Sliding)
+        {
+            playerController.StopSliding();
+        }
+
         animator.SetTrigger("KatanaAttack");
         _canAttack = false;
         gameObject.GetComponent<SFXController>().OnKatanaTriggered();
@@ -80,14 +82,15 @@ public class PlayerAttack : MonoBehaviour
     
     public void GunAttack()
     {
-        var playerController = GetComponentInParent<PlayerController>();
-        if (!playerController._Grounded)
-        {
-            return;
-        }
-        
         if (!_canAttack)
             return;
+        
+        var playerController = GetComponentInParent<PlayerController>();
+
+        if (playerController._Sliding)
+        {
+            playerController.StopSliding();
+        }
         
         animator.SetTrigger("GunAttack");
         _canAttack = false;
