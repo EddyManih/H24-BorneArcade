@@ -22,7 +22,7 @@ public class KnockBackFeedback : MonoBehaviour
 
         animator.SetTrigger("Hurt");
         playerController.EnableKnockbackState();
-        Debug.Log("PlayFeedback called on " + gameObject.name + " by " + sender.name + "!");
+        // Debug.Log("PlayFeedback called on " + gameObject.name + " by " + sender.name + "!");
         
         StopAllCoroutines();
         OnBegin?.Invoke();

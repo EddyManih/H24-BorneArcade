@@ -126,7 +126,7 @@
                 {
                     "name": "negative",
                     "id": "741e84ee-614c-4ebe-aa3b-5d446678d316",
-                    "path": "<Gamepad>/leftStick/left",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -137,7 +137,7 @@
                 {
                     "name": "positive",
                     "id": "86fb66af-3732-4205-9dc0-99ae357d9c62",
-                    "path": "<Gamepad>/leftStick/right",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -181,7 +181,7 @@
                 {
                     "name": "",
                     "id": "53919b2e-0d8d-4772-b921-2bc76ebaea35",
-                    "path": "<Gamepad>/leftStick/up",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -226,6 +226,17 @@
                     "name": "",
                     "id": "294fae3c-945a-4881-b6c0-3e091ec65ac8",
                     "path": "<Joystick>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fall Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6107d3ae-40c8-4a75-9df4-f6fef75b1014",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
