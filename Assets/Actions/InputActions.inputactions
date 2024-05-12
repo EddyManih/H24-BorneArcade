@@ -311,7 +311,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Slide",
+                    "name": "Clavier",
                     "id": "2dd48343-6b33-44f0-91ec-8c78eb19e3b1",
                     "path": "OneModifier",
                     "interactions": "",
@@ -347,6 +347,50 @@
                     "name": "binding",
                     "id": "baa2373f-0c2a-4a1c-9745-f3a4e1ca7dbf",
                     "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Borne",
+                    "id": "61c1ced0-1656-4a8c-982a-42f08d4dbd0e",
+                    "path": "TwoModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide Toggle",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier1",
+                    "id": "f3696ce4-dd56-47ce-8daa-9b5e8ebdc0e5",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier2",
+                    "id": "be171eb8-cd71-45d9-ad9f-2d1e6b90c78d",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "72557e48-6941-4fd7-be9c-58ea4727b286",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
