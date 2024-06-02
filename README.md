@@ -10,6 +10,6 @@ Le premier joueur qui utilise une touche de la manette est P1, et le deuxième e
 
 Contrôles : 
 
-(BindingsBorneH24.png)
+![Contrôles](BindingsBorneH24.png)
 
 Les contrôles sont les mêmes pour tout type de manette supportée par Unity
