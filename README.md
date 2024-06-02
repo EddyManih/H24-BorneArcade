@@ -10,6 +10,7 @@ Le premier joueur qui utilise une touche de la manette est P1, et le deuxième e
 
 Contrôles : 
 
-![Contrôles](BindingsBorneH24.png)
+![Contrôles](https://github.com/EddyManih/H24-BorneArcade/assets/70984283/026b7612-c1e6-4de9-8fea-c1a21e884bf8)
+
 
 Les contrôles sont les mêmes pour tout type de manette supportée par Unity
